@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../HojasEstilos/pagoTarjeta.css">
+    <link rel="stylesheet" href="../HojasEstilos/comun.css">
+    <link rel="icon" href="../IMG/logo/shisha.png" type="image/gif" sizes="16x16">
+    <title>Gestion Pago Tarjeta</title>
+</head>
+<body>
+    <div id="cabezera">
+        <img src="../IMG/logo/shisha.png" alt="logo">
+        <div id="nav">
+            <ul>
+                <li><a href="./index.html"><img src="../IMG/IconSVG/home-1-svgrepo-com.svg" alt="index"><span>INDEX</span></a></li>
+                <li><a href="./menu.html"><img src="../IMG/IconSVG/menu-board-svgrepo-com.svg" alt="menu"><span>MENU</span></a></li>
+                <li><a href="./reservas.html"><img src="../IMG/IconSVG/calendar-svgrepo-com.svg" alt="reservas"><span>RESERVAS</span></a></li>
+                <li><a href="./nosotros.html"><img src="../IMG/IconSVG/users-svgrepo-com.svg" alt="nosotros"><span>NOSOTROS</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="div_general">
+        <div id="div_titulo_pago">
+            <h1>GESTIÓN PAGO TARJETA</h1>
+        </div>
+        <form action="index.html" id="formulario_pago" method="post">
+                <label>Número Tarjeta:
+                    <input class="inputComun" name="numero_tarjeta" type="text" placeholder="Introduce tu numero de tarjeta" minlength="16" maxlength="16" pattern="[0-9]{16}" required />
+                </label><br>
+                <label id="labeCvv">CVV:
+                    <input class="inputComun" name="cvv" type="number" value="0" min="000" max="999" required/>
+                </label><br>
+                <label>Fecha Caducidad:
+                    <input class="inputComun" name="fecha_caducidad" type="date" required/>
+                </label><br>
+                <label for="boton_enviar"><input id="boton_enviar" type="submit" value="Enviar" /></labe>
+        </form>
+    </div>
+    <div id="foote">
+        <a href="./comunicanos.html">COMUNICA CON NOSOTROS</a>
+    </div>
+</body>
+</html>

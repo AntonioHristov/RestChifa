@@ -1,0 +1,48 @@
+*{
+    margin: auto;
+}
+
+body{
+    background-color: #405887;
+    color: white;
+}
+
+#BoxForm{
+    margin-top: 70px;
+    margin-bottom: 50px;
+    width: 350px;
+    height: 450px;
+    border: 10px double lightsteelblue;
+    padding: 1%;
+    overflow: auto;
+    text-align: center;
+}
+#imglogo>img{
+    width: 40px;
+    height: 70px;
+    position: absolute;
+    top:-100px;
+    left: 100px;
+}
+#foote{
+    text-align: center;
+    height: 20px;
+    width: 90%;
+    border-top:3px dashed palegoldenrod;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    line-height: 50px;
+}
+
+a:link{
+    color: white;
+}
+
+@media (max-height:700px) {
+    #BoxForm{
+        margin-top: 30px;
+    }
+}

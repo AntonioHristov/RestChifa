@@ -1,0 +1,92 @@
+html,body{
+    height: 98%;
+    width: 98%;
+}
+
+#BoxForm{
+    margin: auto;
+    width: 30%;
+    height: 75%;
+    border: 10px inset black;
+    padding: 1%;
+    overflow: auto;
+    position: relative;
+    top:7%;
+    text-align: center;
+}
+#TitleForm{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5%;
+    margin-top: -10%;
+}
+
+#SoloEspania{
+    width:23px;
+    margin-right:-5.5px;
+}
+
+#phone{
+    width: 70%;
+    margin-top: 1.5%;
+    margin-bottom: 4%;
+}
+
+#passw{
+    width: 80%;
+    margin-top: 1.5%;
+    margin-bottom: 4%;
+}
+
+#Rlink{
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+    margin:auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#BoxForm>#RegistForm{
+    position: relative;
+    top:20%;
+    left:15%;
+    width: 70%;
+    padding: 1%;
+    height: 60%;
+}
+
+#regist_passw,#repit_regist_passw{
+    width: 80%;
+    margin-top: 1.5%;
+    margin-bottom: 4%;
+}
+
+#Registre{
+    height: 15%;
+    width: 45%;
+    font-size: 100%;
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+    #BoxForm{
+        width: 60%;
+    }
+}
+
+@media(max-height:1080px) and (min-height:800px) {
+    #BoxForm{
+        height: 40%;
+    }
+    
+}
+
+@media(max-height:320px) {
+    #BoxForm{
+        height: 85%;
+        top:1%;
+    }
+    #TitleForm{
+        margin-top: -20%;
+    }
+}

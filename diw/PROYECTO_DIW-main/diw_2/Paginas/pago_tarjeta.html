@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Pago Tarjeta</title>
+    <link rel="stylesheet" href="../HojasEstilos/pago_tarjeta.css">
+    <script src="../javascript/pago_tarjeta.js"></script>
+</head>
+<body>
+    <!--
+        nº tarjeta (nº de entre 13 y 18 digitos, chen dice 16 digitos)
+        cvv (numero 3 digitos)
+        fecha caducidad
+    -->
+
+    <div id="div_general">
+        <form id="formulario_pago" method="post">
+
+            <div id="div_titulo_pago">
+                <h1>GESTIÓN PAGO TARJETA</h1>
+            </div>
+            
+            <br><br><br>
+            <h2 for="numero_tarjeta">Número Tarjeta: </h2>
+            <input id="numero_tarjeta" name="numero_tarjeta" type="number" value="0" min="0000000000000000" max="9999999999999999"/>
+            <br><br>
+            <h2 for="cvv">CVV: </h2>
+            <input id="cvv" name="cvv" type="number" value="0" min="000" max="999"/>
+            <br><br>
+            <h2 for="fecha_caducidad">Fecha Caducidad: </h2>
+            <input id="fecha_caducidad" name="fecha_caducidad" type="date"/>
+            <br><br>
+
+            <input id="boton_enviar" type="submit" value="Enviar" />
+            <br>
+        </form>
+    </div>
+
+</body>
+</html>

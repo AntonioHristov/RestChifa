@@ -1,0 +1,40 @@
+h2
+{
+    display: inline; /* No haya un salto de linea al final del elemento */
+}
+
+#div_general
+{
+    display: flex; /* Modelo caja flexible */
+    flex-flow: row wrap; /* Para que funcione la clase nueva_linea_flex */
+
+    justify-content: center; /* Centra el contenido de dentro horizontalmente */
+    
+    background-color: lightgray; /* Color de fondo */
+
+    height: 100%; /* Todo el tamaño del contenedor padre */
+    width: 100%; /* Todo el tamaño del contenedor padre */
+}
+
+#formulario_pago
+{
+    margin-top: 0.5%; /* Margen arriba */
+    margin-bottom: 0.5%; /* Margen abajo */
+    text-align: center; /* Texto centrado */
+}
+
+#div_titulo_pago
+{
+    border: solid 1px black; /* Línea negra alrededor por afuera */
+    background-color: white; /* Color de fondo */
+
+    padding: 0.5%; /* Espacio interior arriba, abajo, izquierda y derecha */
+    margin: 0.5%; /* Espacio exterior arriba, abajo, izquierda y derecha */
+
+    text-align: center; /* Texto centrado */
+}
+
+#boton_enviar
+{
+    font-size: 200%; /* El doble de tamaño */
+}
