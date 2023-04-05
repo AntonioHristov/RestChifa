@@ -1,0 +1,16 @@
+<h1>BIENVENIDO A RESTCHIFA</h1>
+
+{% include 'restChifa/navegacion.html' %} 
+
+
+{% if restaurant_objects %}
+<ul>
+{% for restaurant in restaurant_objects %}
+    <li>{{ restaurant.name_restaurant }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No restaurants are available.</p>
+{% endif %}
+
+

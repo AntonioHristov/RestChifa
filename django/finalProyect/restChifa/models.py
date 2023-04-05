@@ -33,6 +33,7 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, blank = False, null = False)
     description = models.CharField(max_length=200)
     src_photo = models.CharField(max_length=200)
+    popular = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name_dish
