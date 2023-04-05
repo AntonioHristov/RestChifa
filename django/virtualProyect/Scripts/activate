@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Wamp64\www\pfdaw2v\django\virtualProyect"
+VIRTUAL_ENV="C:\Wamp64\www\RestChifa\django\virtualProyect"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
