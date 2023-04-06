@@ -1,0 +1,47 @@
+<h1>PLATOS</h1>
+
+{% include 'restChifa/navegation.html' %} 
+
+<h2>A LA CARTA</h2>
+
+{% if dish_types %}
+
+{% for dish_type in dish_types %}
+    <br><br>
+    <h3>{{ dish_type }}</h3>
+    <br><br>
+
+
+    {% if dish_objects %}
+    {% for dish in dish_objects %}
+        {% if dish.name_type == dish_type %}
+        <ul>
+            <li>
+            <b>{{ dish.name_dish }}</b>
+            <p>Descripción: {{ dish.description }}</p>
+            <p>Precio: {{ dish.price }}€</p>
+            <p><img src="./../../static/restChifa/img/{{dish.src_photo}}" height="200em" width="200em"/></p>
+
+            </li>
+        </ul>
+        {% else %}
+
+        {% endif %}
+    {% endfor %}
+    {% else %}
+    <p>No dishes are available.</p>
+    {% endif %}
+
+
+{% endfor %}
+
+{% else %}
+<p>No dishes types are available.</p>
+{% endif %}
+
+
+
+
+
+
+

@@ -5,10 +5,24 @@ from .models import Restaurant, Reserve, Dish, Dish_menu, Contact, Contact_Phone
 
 
 
-def menu(request):
+def dishes(request):
     restaurant_objects = Restaurant.objects.all()
-    context = {'restaurant_objects': restaurant_objects}
-    return render(request, 'restChifa/menu.html', context)
+    dish_objects = Dish.objects.all()
+    dish_types = Dish.objects.values_list('name_type', flat=True).distinct().all()
+    context = {
+        'restaurant_objects': restaurant_objects,
+        'dish_objects': dish_objects,
+        'dish_types': dish_types
+        }
+    return render(request, 'restChifa/dishes.html', context)
 
 def index(request):
-    return HttpResponse("Hello, world.")
+    restaurant_objects = Restaurant.objects.all()
+    dish_objects = Dish.objects.all()
+    dish_types = Dish.objects.values_list('name_type', flat=True).distinct().all()
+    context = {
+        'restaurant_objects': restaurant_objects,
+        'dish_objects': dish_objects,
+        'dish_types': dish_types
+        }
+    return render(request, 'restChifa/menu.html', context)

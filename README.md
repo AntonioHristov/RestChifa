@@ -1,6 +1,7 @@
 # RestChifa
 Proyecto Final Daw2V ies Juan de la Cierva
 
+Próximo paso: Campo popular en el modelo dishes y migrar
 
 Requerimientos:
 
@@ -23,4 +24,6 @@ https://docs.djangoproject.com/en/4.1/howto/windows/
 https://ourcodeworld.com/articles/read/236/how-to-setup-your-first-django-project-and-say-hello-world-in-windows
 https://docs.djangoproject.com/en/4.1/intro/tutorial01/
 http://www.chifadoromari.com
+
+
 

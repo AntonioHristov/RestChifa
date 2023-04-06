@@ -32,7 +32,7 @@ class Dish(models.Model):
     name_type = models.CharField(max_length=100, blank = False, null = False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank = False, null = False)
     description = models.CharField(max_length=200)
-    src_photo = models.CharField(max_length=200)
+    src_photo = models.ImageField(default='no_image.jpg')
     popular = models.IntegerField(default=0)
 
     def __str__(self):
