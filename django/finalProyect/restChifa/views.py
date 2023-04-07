@@ -5,6 +5,13 @@ from .models import Restaurant, Reserve, Dish, Dish_menu, Contact, Contact_Phone
 
 
 
+def index(request):
+    dish_objects = Dish.objects.all()
+    context = {
+        'dish_objects': dish_objects
+        }
+    return render(request, 'restChifa/menu.html', context)
+
 def dishes(request):
     restaurant_objects = Restaurant.objects.all()
     dish_objects = Dish.objects.all()
@@ -16,13 +23,47 @@ def dishes(request):
         }
     return render(request, 'restChifa/dishes.html', context)
 
-def index(request):
+# ref: https://projectsplaza.com/how-to-save-form-data-in-database-in-django/
+def reserve(request):
     restaurant_objects = Restaurant.objects.all()
-    dish_objects = Dish.objects.all()
-    dish_types = Dish.objects.values_list('name_type', flat=True).distinct().all()
+
+    # FALTA VALIDAR QUE NO ESTE VACIO Y TAL
+    if request.method=='POST':
+        name=request.POST['name_reserve_name']
+        phone=request.POST['name_reserve_tlf']
+        date_utc=request.POST['name_reserve_date']
+        name_restaurant=request.POST['name_reserve_restaurant']
+        number_people=request.POST['name_reserve_people']
+        email=request.POST['name_reserve_email']
+        other=request.POST['name_reserve_other']
+        
+
+
+        reserve=Reserve.objects.create(name=name,phone=phone,name_restaurant=name_restaurant,email=email,other=other)
+
+
     context = {
-        'restaurant_objects': restaurant_objects,
-        'dish_objects': dish_objects,
-        'dish_types': dish_types
+    'restaurant_objects': restaurant_objects
+    }
+
+    return render(request,'restChifa/reserve.html', context)
+
+
+
+def reservesssss(request):
+    dish_objects = Dish.objects.all()
+    context = {
+        'dish_objects': dish_objects
         }
-    return render(request, 'restChifa/menu.html', context)
+    return render(request, 'restChifa/reserve.html', context)
+
+def contact(request):
+    dish_objects = Dish.objects.all()
+    context = {
+        'dish_objects': dish_objects
+        }
+    return render(request, 'restChifa/contact.html', context)
+
+
+
+

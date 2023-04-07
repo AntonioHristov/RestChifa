@@ -14,10 +14,12 @@ class Reserve(models.Model):
     # id_reserve = models.IntegerField(primary_key=True, default=0, auto_now_add=True)
     name = models.CharField(max_length=200, blank = False, null = False)
     phone = models.CharField(max_length=15, blank = False, null = False)
-    date = models.DateField(blank = False, null = False)
-    time = models.TimeField(blank = False, null = False)
-    name_restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank = False, null = False)
-    number_people = models.IntegerField(default=0, blank = False, null = False)
+
+    # date_utc = models.DateTimeField(blank = False, null = False)
+
+    # name_restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank = False, null = False)
+    name_restaurant = models.CharField(max_length=200, blank = False, null = False)
+    # number_people = models.IntegerField(default=0, blank = False, null = False)
     email = models.CharField(max_length=100)
     other = models.CharField(max_length=200)
 
@@ -25,7 +27,8 @@ class Reserve(models.Model):
         return self.name
 
     def is_valid(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(hours=1)
+        return self.date_utc >= timezone.now() - datetime.timedelta(hours=1)
+
 
 class Dish(models.Model):
     name_dish = models.CharField(primary_key=True, max_length=200, blank = False, null = False)
