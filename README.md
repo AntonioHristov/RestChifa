@@ -1,7 +1,7 @@
 # RestChifa
 Proyecto Final Daw2V ies Juan de la Cierva
 
-Próximo paso: Campo popular en el modelo dishes y migrar
+Próximo paso: Campo popular en el modelo dishes y migrar.
 
 Requerimientos:
 
