@@ -10,16 +10,18 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name_restaurant
 
+
+
+
 class Reserve(models.Model):
     # id_reserve = models.IntegerField(primary_key=True, default=0, auto_now_add=True)
     name = models.CharField(max_length=200, blank = False, null = False)
     phone = models.CharField(max_length=15, blank = False, null = False)
+    date_utc = models.DateTimeField('date reserve')
 
-    # date_utc = models.DateTimeField(blank = False, null = False)
-
-    # name_restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank = False, null = False)
-    name_restaurant = models.CharField(max_length=200, blank = False, null = False)
-    # number_people = models.IntegerField(default=0, blank = False, null = False)
+    name_restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    # name_restaurant = models.CharField(max_length=200, blank = False, null = False)
+    number_people = models.IntegerField(default=0, blank = False, null = False)
     email = models.CharField(max_length=100)
     other = models.CharField(max_length=200)
 

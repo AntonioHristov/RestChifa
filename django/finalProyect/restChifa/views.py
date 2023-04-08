@@ -28,18 +28,24 @@ def reserve(request):
     restaurant_objects = Restaurant.objects.all()
 
     # FALTA VALIDAR QUE NO ESTE VACIO Y TAL
-    if request.method=='POST':
+    if request.method=='POST' and request.POST:
         name=request.POST['name_reserve_name']
         phone=request.POST['name_reserve_tlf']
         date_utc=request.POST['name_reserve_date']
-        name_restaurant=request.POST['name_reserve_restaurant']
+
+
+        for restaurant in restaurant_objects:
+            if restaurant.name_restaurant == request.POST['name_reserve_restaurant']:
+                name_restaurant=restaurant
+
+
         number_people=request.POST['name_reserve_people']
         email=request.POST['name_reserve_email']
         other=request.POST['name_reserve_other']
         
 
 
-        reserve=Reserve.objects.create(name=name,phone=phone,name_restaurant=name_restaurant,email=email,other=other)
+        reserve=Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,name_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
 
 
     context = {
