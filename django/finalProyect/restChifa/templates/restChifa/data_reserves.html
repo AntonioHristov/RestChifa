@@ -1,0 +1,33 @@
+<h1>DATOS</h1>
+
+{% include 'restChifa/navegation.html' %} 
+
+<h2>RESERVAS</h2>
+
+{% if reserve_objects %}
+
+{% for reserve in reserve_objects %}
+    <br><br>
+    <p>Nombre: {{ reserve.name }}</p>
+    <p>Teléfono: {{ reserve.phone }}</p>
+    <p>Fecha UTC: {{ reserve.date_utc }}</p>
+    <p>Restaurante: {{ reserve.name_restaurant }}</p>
+    <p>Cantidad Personas: {{ reserve.number_people }}</p>
+    <p>Email: {{ reserve.email }}</p>
+    <p>Otros Datos: {{ reserve.other }}</p>
+    <br><br>
+
+
+
+{% endfor %}
+
+{% else %}
+<p>No reserves types are available.</p>
+{% endif %}
+
+
+
+
+
+
+

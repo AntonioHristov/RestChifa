@@ -108,6 +108,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+TIME_ZONE_USER = 'Europe/Madrid'
+
 USE_I18N = True
 
 USE_L10N = True

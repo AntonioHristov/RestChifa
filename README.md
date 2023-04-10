@@ -1,7 +1,7 @@
 # RestChifa
 Proyecto Final Daw2V ies Juan de la Cierva
 
-Próximo paso: Archivo Views.py # FALTA VALIDAR QUE EL POST NO ESTE VACIO Y TAL
+Próximo paso: Intentar mostrar fecha usuario (no utc) en data reserves, también avanzar en la página contact
 
 Requerimientos:
 
@@ -23,6 +23,8 @@ Referencias:
 https://docs.djangoproject.com/en/4.1/howto/windows/
 https://ourcodeworld.com/articles/read/236/how-to-setup-your-first-django-project-and-say-hello-world-in-windows
 https://docs.djangoproject.com/en/4.1/intro/tutorial01/
+https://projectsplaza.com/how-to-save-form-data-in-database-in-django/
+https://stackoverflow.com/questions/24710233/python-convert-time-to-utc-format
 http://www.chifadoromari.com
 
 
