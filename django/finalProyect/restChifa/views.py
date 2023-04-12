@@ -93,24 +93,21 @@ def reserve(request):
 
 
 def contact(request):
-    dish_objects = Dish.objects.all()
+    contact_objects = Contact.objects.all()
     context = {
-        'dish_objects': dish_objects
+        'contact_objects': contact_objects
         }
     return render(request, 'restChifa/contact.html', context)
 
 
 
 def data_reserves(request):
-    restaurant_objects = Restaurant.objects.all()
     reserve_objects = Reserve.objects.all()
-    dish_objects = Dish.objects.all()
-    dish_types = Dish.objects.values_list('name_type', flat=True).distinct().all()
+    user_timezone = settings.TIME_ZONE_USER
+
 
     context = {
-        'restaurant_objects': restaurant_objects,
         'reserve_objects': reserve_objects,
-        'dish_types': dish_types,
-        'dish_types': dish_types
+        'user_timezone': user_timezone
         }
     return render(request, 'restChifa/data_reserves.html', context)

@@ -5,12 +5,14 @@
 <h2>RESERVAS</h2>
 
 {% if reserve_objects %}
+{% load tz %}
 
 {% for reserve in reserve_objects %}
     <br><br>
     <p>Nombre: {{ reserve.name }}</p>
     <p>Teléfono: {{ reserve.phone }}</p>
     <p>Fecha UTC: {{ reserve.date_utc }}</p>
+    <p>Fecha LOCAL: {{ reserve.date_utc|timezone:user_timezone }}</p>
     <p>Restaurante: {{ reserve.name_restaurant }}</p>
     <p>Cantidad Personas: {{ reserve.number_people }}</p>
     <p>Email: {{ reserve.email }}</p>
