@@ -82,11 +82,30 @@ def reserve(request):
         
 
 
-        reserve=Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,name_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
+        reserve = Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,name_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
+
+        success = "Su reserva ha sido realizada con éxito. Guarda tu Identificador, es: " + str(reserve.pk)
+
+    else:
+        success = ""
+
+
+    post = {
+    'name_reserve_name': request.POST.get("name_reserve_name", ""),
+    'name_reserve_tlf': request.POST.get("name_reserve_tlf", ""),
+    'name_reserve_date': request.POST.get("name_reserve_date", ""),
+    'name_reserve_restaurant': request.POST.get("name_reserve_restaurant", ""),
+    'name_reserve_people': request.POST.get("name_reserve_people", ""),
+    'name_reserve_email': request.POST.get("name_reserve_email", ""),
+    'name_reserve_other': request.POST.get("name_reserve_other", ""),
+    'success': success
+    }
+        
 
 
     context = {
-    'restaurant_objects': restaurant_objects
+    'restaurant_objects': restaurant_objects,
+    'post': post
     }
 
     return render(request,'restChifa/reserve.html', context)

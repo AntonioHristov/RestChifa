@@ -12,9 +12,9 @@ class Restaurant(models.Model):
 
 
 
-
 class Reserve(models.Model):
     # id_reserve = models.IntegerField(primary_key=True, default=0, auto_now_add=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, blank = False, null = False)
     phone = models.CharField(max_length=15, blank = False, null = False)
     date_utc = models.DateTimeField('date reserve')
@@ -26,7 +26,7 @@ class Reserve(models.Model):
     other = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return 'ID: {}'.format(self.pk)
 
     def is_valid(self):
         return self.date_utc >= timezone.now() - datetime.timedelta(hours=1)

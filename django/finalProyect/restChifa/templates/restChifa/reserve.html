@@ -8,22 +8,22 @@
     {% csrf_token %}
 
     <label for="name_reserve_name">Nombre: </label>
-    <input name="name_reserve_name" type="text" placeholder="Escribe tu nombre aquí" value="a"  />
+    <input name="name_reserve_name" type="text" placeholder="Escribe tu nombre aquí" value="{{ post.name_reserve_name }}"/>
 
     <br><br>
 
     <label for="name_reserve_tlf">Teléfono: </label>
-    <input id="id_reserve_tlf" name="name_reserve_tlf" type="tel" placeholder="Escribe tu número de teléfono aquí"  />
+    <input id="id_reserve_tlf" name="name_reserve_tlf" type="tel" placeholder="Escribe tu número de teléfono aquí" value="{{ post.name_reserve_tlf }}"/>
     
     <br><br>
 
     <label for="name_reserve_date">Fecha: </label>
-    <input name="name_reserve_date" type="datetime-local"  />
+    <input name="name_reserve_date" type="datetime-local" value="{{ post.name_reserve_date }}"/>
 
     <br><br>
 
     <label for="name_reserve_restaurant">Restaurante: </label>
-    <select name="name_reserve_restaurant"  >
+    <select name="name_reserve_restaurant" value="{{ post.name_reserve_restaurant }}">
         {% if restaurant_objects %}
         {% for restaurant in restaurant_objects %}
             <option value="{{restaurant.name_restaurant}}">{{restaurant.name_restaurant}}</option>
@@ -36,27 +36,27 @@
     <br><br>
 
     <label for="name_reserve_people">Cantidad Personas: </label>
-    <input name="name_reserve_people" type="number" min="1" value="1"  />
+    <input name="name_reserve_people" type="number" min="1" value="1" value="{{ post.name_reserve_people }}"/>
 
     <br><br>
 
     <label for="name_reserve_email">Email (Opcional): </label>
-    <input name="name_reserve_email" type="email" placeholder="Escribe tu email aquí"/>
+    <input name="name_reserve_email" type="email" placeholder="Escribe tu email aquí" value="{{ post.name_reserve_email }}"/>
 
     <br><br>
 
     <label for="name_reserve_other">Otros (Opcional): </label>
-    <textarea name="name_reserve_other" placeholder="Datos adicionales, ejemplo: Llevas bebés, objetos que quieras guardar, etc"></textarea>
+    <textarea name="name_reserve_other" placeholder="Datos adicionales, ejemplo: Llevas bebés, objetos que quieras guardar, etc">{{ post.name_reserve_other }}</textarea>
 
     <br><br>
 
-    <div id="id_reserve_mistakes">
-
+    <div id="id_reserve_error">
+        {{ post.error }}
     </div>
-    <div id="id_reserve_ok">
-
+    <div id="id_reserve_success">
+        {{ post.success }}
     </div>
-
+        
     <br><br>
 
     <input type="submit" value="Reservar">

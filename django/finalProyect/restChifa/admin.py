@@ -2,12 +2,14 @@ from django.contrib import admin
 
 from .models import Restaurant, Reserve, Dish, Dish_menu, Contact, Contact_Phone, Contact_Mail
 
+class PK_Default_Admin(admin.ModelAdmin):
+    search_fields = ['id']
 
 
 
 
 admin.site.register(Restaurant)
-admin.site.register(Reserve)
+admin.site.register(Reserve, PK_Default_Admin)
 admin.site.register(Dish)
 admin.site.register(Dish_menu)
 admin.site.register(Contact)
