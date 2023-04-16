@@ -1,7 +1,30 @@
 # RestChifa
 Proyecto Final Daw2V ies Juan de la Cierva
 
-Próximo paso: Intentar mostrar fecha usuario (no utc) en data reserves, también avanzar en la página contact
+Próximo paso: 
+
+Validar el limite de caracteres en el formulario, 
+crear en settings constante con maximas personas por reserva y aplicar la validación,
+datos reservas ordenados por la fecha más reciente, a ser posible ordenados por fecha local,
+cambiar info de dishes por el nombre y un link que te muestre el detalle del plato,
+ordenar platos de menu principal por popularidad con un limite constante definido en settings,
+crear algunos menus con algunos platos y pintarlos... probablemente el nombre en dishes con link a su detalle,
+validar y guardar los prefijos de telefono del usuario,
+intentar hacer la pagina bonita, probablemente con bootstrap,
+Crear datos guiandome de la pagina chifadomari
+
+// Opcional si voy sobrado
+
+crear telefonos e emails extra y pintarlos en la pagina contact,
+crear una barra de búsqueda que filtre los resultados,
+datos reservas solo visible para los administradores e intentar la posibilidad de eliminar los registros en la misma pagina,
+intentar de nuevo conseguir la hora local del usuario o guardar una lista y dar a elegir la zona horaria en el formulario,
+validaciones del formulario en cliente, probablemente con javascript,
+crear algún restaurante más y considerar datos distintos entre ellos,
+actualizar los dibujos
+optimizar, limpiar el código y pensar más cosas
+
+
 
 Requerimientos:
 

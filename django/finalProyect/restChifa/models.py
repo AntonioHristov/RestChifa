@@ -1,5 +1,8 @@
 from django.db import models
 
+from django.conf import settings
+from .common import get_datetime_operation_add
+
 # Create your models here.
 
 
@@ -13,14 +16,12 @@ class Restaurant(models.Model):
 
 
 class Reserve(models.Model):
-    # id_reserve = models.IntegerField(primary_key=True, default=0, auto_now_add=True)
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, blank = False, null = False)
     phone = models.CharField(max_length=15, blank = False, null = False)
     date_utc = models.DateTimeField('date reserve')
 
     name_restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    # name_restaurant = models.CharField(max_length=200, blank = False, null = False)
     number_people = models.IntegerField(default=0, blank = False, null = False)
     email = models.CharField(max_length=100)
     other = models.CharField(max_length=200)
@@ -28,8 +29,12 @@ class Reserve(models.Model):
     def __str__(self):
         return 'ID: {}'.format(self.pk)
 
-    def is_valid(self):
-        return self.date_utc >= timezone.now() - datetime.timedelta(hours=1)
+    def __is_valid__(self):
+        days_more = 0
+        seconds_more = 3600 # 1 hour
+        return self.date_utc > get_datetime_operation_add(timezone.now(),days_more,seconds_more)
+
+
 
 
 class Dish(models.Model):

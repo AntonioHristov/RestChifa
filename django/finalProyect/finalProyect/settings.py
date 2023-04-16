@@ -126,3 +126,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DAYS_IN_ADVANCE_RESERVES = 0
+SECONDS_IN_ADVANCE_RESERVES = 3540 # 1 hour counting the minute
