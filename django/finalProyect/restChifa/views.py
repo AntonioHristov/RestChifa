@@ -84,9 +84,13 @@ def reserve(request):
 
         if name == "" or name.isspace() :
             errorname = "El nombre no debe estar vacío"
+        elif len(name) > 200 :
+            errorname = "El nombre no debe tener más de 200 caracteres"
 
         if phone == "" or phone.isspace() or not phone.isnumeric() :
             errortlf = "El teléfono no debe estar vacío y debe ser un número entero no negativo"
+        elif len(phone) > 15 :
+            errortlf = "El teléfono no debe tener más de 15 caracteres"
 
         if date_utc == "" or date_utc < get_datetime_operation_add(timezone.now(), settings.DAYS_IN_ADVANCE_RESERVES, settings.SECONDS_IN_ADVANCE_RESERVES) :
             errordate = "Elige una fecha válida, debe haber al menos 1 hora de diferencia"
@@ -94,9 +98,14 @@ def reserve(request):
         if name_restaurant == "" :
             errorrestaurant = "Debes elegir un restaurante, haz click en el desplegable y elige uno"
 
-        if not number_people.isnumeric() or "," in number_people or "." in number_people or int(number_people) < 1 :
-            errorpeople = "Debe ser un número entero mayor a 0... ¿Que demonios, intentas romper mi sitio web?"
+        if not number_people.isnumeric() or "," in number_people or "." in number_people or int(number_people) < 1 or int(number_people) > settings.MAXIMUM_PEOPLE_PER_RESERVE :
+            errorpeople = "Debe ser un número entero mayor a 0 y menor a " + str(settings.MAXIMUM_PEOPLE_PER_RESERVE + 1)
 
+        if len(email) > 100 :
+            erroremail = "El email no debe tener más de 100 caracteres"
+
+        if len(other) > 200 :
+            errorother = "Los datos extra no deben tener más de 200 caracteres"
 
 
         if errorname == "" and errortlf == "" and errordate == "" and errorrestaurant == "" and errorpeople == "" and erroremail == "" and errorother == "" :
@@ -110,7 +119,9 @@ def reserve(request):
     'tlf': errortlf,
     'date': errordate,
     'restaurant': errorrestaurant,
-    'people': errorpeople
+    'people': errorpeople,
+    'email': erroremail,
+    'other': errorother
     }
 
     post = {
@@ -143,7 +154,7 @@ def contact(request):
 
 
 def data_reserves(request):
-    reserve_objects = Reserve.objects.all()
+    reserve_objects = Reserve.objects.all().order_by('date_utc')#[:5]
     user_timezone = settings.TIME_ZONE_USER
 
 

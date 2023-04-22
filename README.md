@@ -3,18 +3,17 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-Validar el limite de caracteres en el formulario, 
-crear en settings constante con maximas personas por reserva y aplicar la validación,
-datos reservas ordenados por la fecha más reciente, a ser posible ordenados por fecha local,
+crear campo categoria a los platos y darle el valor aeropuertos, ensaladas, etc. El tipo sería principalmente: Primero, segundo, postre, bebida, no definido...
 cambiar info de dishes por el nombre y un link que te muestre el detalle del plato,
+crear página menus, algunos menus con algunos platos separados por su tipo y pintarlos con link a su detalle,
 ordenar platos de menu principal por popularidad con un limite constante definido en settings,
-crear algunos menus con algunos platos y pintarlos... probablemente el nombre en dishes con link a su detalle,
 validar y guardar los prefijos de telefono del usuario,
 intentar hacer la pagina bonita, probablemente con bootstrap,
 Crear datos guiandome de la pagina chifadomari
 
 // Opcional si voy sobrado
 
+boton reset despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission)
 crear telefonos e emails extra y pintarlos en la pagina contact,
 crear una barra de búsqueda que filtre los resultados,
 datos reservas solo visible para los administradores e intentar la posibilidad de eliminar los registros en la misma pagina,
@@ -42,7 +41,7 @@ usuario: ah
 contraseña: ah
 email: ah@ah.ah
 
-Referencias:
+Referencias destacadas:
 https://docs.djangoproject.com/en/4.1/howto/windows/
 https://ourcodeworld.com/articles/read/236/how-to-setup-your-first-django-project-and-say-hello-world-in-windows
 https://docs.djangoproject.com/en/4.1/intro/tutorial01/

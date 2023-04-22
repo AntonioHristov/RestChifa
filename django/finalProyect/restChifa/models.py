@@ -19,19 +19,19 @@ class Reserve(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, blank = False, null = False)
     phone = models.CharField(max_length=15, blank = False, null = False)
-    date_utc = models.DateTimeField('date reserve')
+    date_utc = models.DateTimeField('date reserve UTC')
 
     name_restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    number_people = models.IntegerField(default=0, blank = False, null = False)
-    email = models.CharField(max_length=100)
-    other = models.CharField(max_length=200)
+    number_people = models.IntegerField(default=1, blank = False, null = False)
+    email = models.CharField(max_length=100, blank=True)
+    other = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return 'ID: {}'.format(self.pk)
 
     def __is_valid__(self):
-        days_more = 0
-        seconds_more = 3600 # 1 hour
+        days_more = settings.DAYS_IN_ADVANCE_RESERVES
+        seconds_more = settings.SECONDS_IN_ADVANCE_RESERVES
         return self.date_utc > get_datetime_operation_add(timezone.now(),days_more,seconds_more)
 
 
