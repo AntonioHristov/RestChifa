@@ -3,8 +3,6 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-crear campo categoria a los platos y darle el valor aeropuertos, ensaladas, etc. El tipo sería principalmente: Primero, segundo, postre, bebida, no definido...
-cambiar info de dishes por el nombre y un link que te muestre el detalle del plato,
 crear página menus, algunos menus con algunos platos separados por su tipo y pintarlos con link a su detalle,
 ordenar platos de menu principal por popularidad con un limite constante definido en settings,
 validar y guardar los prefijos de telefono del usuario,

@@ -22,13 +22,21 @@ def index(request):
 def dishes(request):
     restaurant_objects = Restaurant.objects.all()
     dish_objects = Dish.objects.all()
-    dish_types = Dish.objects.values_list('name_type', flat=True).distinct().all()
+    dish_categories = Dish.objects.values_list('category', flat=True).distinct().all()
     context = {
         'restaurant_objects': restaurant_objects,
         'dish_objects': dish_objects,
-        'dish_types': dish_types
+        'dish_categories': dish_categories
         }
     return render(request, 'restChifa/dishes.html', context)
+
+
+def dish_detail(request, name_dish):
+    try:
+        dish = Dish.objects.get(pk__iexact=name_dish)
+    except Dish.DoesNotExist:
+        dish = False
+    return render(request, 'restChifa/dish_detail.html', {'dish': dish})
 
 
 def reserve(request):

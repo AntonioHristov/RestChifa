@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-4_o4926p6z34e#3e#=cgpc!pp_%lkry(1#dubwz#$25kk(9mdh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -127,6 +127,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+NAME_PROYECT = 'restChifa'
+#PATH_PROYECT = os.path.join(BASE_DIR , NAME_PROYECT" # Not working
 DAYS_IN_ADVANCE_RESERVES = 0
 SECONDS_IN_ADVANCE_RESERVES = 3540 # 1 hour counting the minute
 MAXIMUM_PEOPLE_PER_RESERVE = 10

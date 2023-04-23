@@ -39,7 +39,8 @@ class Reserve(models.Model):
 
 class Dish(models.Model):
     name_dish = models.CharField(primary_key=True, max_length=200, blank = False, null = False)
-    name_type = models.CharField(max_length=100, blank = False, null = False)
+    type = models.CharField(max_length=100, blank = False, null = False)
+    category = models.CharField(max_length=100)#, blank = False, null = False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank = False, null = False)
     description = models.CharField(max_length=200)
     src_photo = models.ImageField(default='no_image.jpg')

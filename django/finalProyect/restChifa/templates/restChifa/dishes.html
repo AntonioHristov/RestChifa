@@ -2,44 +2,25 @@
 
 {% include 'restChifa/navegation.html' %} 
 
-<h2>A LA CARTA</h2>
+{% if dish_categories %}
 
-{% if dish_types %}
-
-{% for dish_type in dish_types %}
-    <br><br>
-    <h3>{{ dish_type }}</h3>
-    <br><br>
-
-
-    {% if dish_objects %}
-    {% for dish in dish_objects %}
-        {% if dish.name_type == dish_type %}
-        <ul>
-            <li>
-            <b>{{ dish.name_dish }}</b>
-            <p>Descripción: {{ dish.description }}</p>
-            <p>Precio: {{ dish.price }}€</p>
-            <p><img src="./../../static/restChifa/img/{{dish.src_photo}}" height="200em" width="200em"/></p>
-
-            </li>
-        </ul>
+    {% for dish_category in dish_categories %}
+        <h2>{{ dish_category|upper }}</h2>
+        {% if dish_objects %}
+            <ul>
+            {% for dish in dish_objects %}
+                {% if dish.category == dish_category %}
+                    <a href="./dish/{{dish.name_dish}}"><li><h3>{{ dish.name_dish|upper }}</h3></li></a>
+                {% endif %}
+            {% endfor %}
+            </ul>
         {% else %}
-
+            <p>No dishes are available.</p>
         {% endif %}
     {% endfor %}
-    {% else %}
-    <p>No dishes are available.</p>
-    {% endif %}
-
-
-{% endfor %}
-
 {% else %}
-<p>No dishes types are available.</p>
+    <p>No dishes categories are available.</p>
 {% endif %}
-
-
 
 
 
