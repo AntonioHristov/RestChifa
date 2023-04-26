@@ -49,9 +49,9 @@ class Dish(models.Model):
     def __str__(self):
         return self.name_dish
 
-class Dish_menu(models.Model):
-    name_dish = models.ForeignKey(Dish, on_delete=models.CASCADE, blank = False, null = False)
+class Menu(models.Model):
     name_menu = models.CharField(max_length=200, blank = False, null = False)
+    name_dish = models.ForeignKey(Dish, on_delete=models.CASCADE, blank = False, null = False)
 
     def __str__(self):
         return self.name_menu
@@ -63,7 +63,7 @@ class Contact(models.Model):
     other = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return 'ID: {}'.format(self.pk)
 
 class Contact_Phone(models.Model):
     id_contact = models.ForeignKey(Contact, on_delete=models.CASCADE, blank = False, null = False)

@@ -1,0 +1,20 @@
+<h1>PLATOS</h1>
+
+{% include 'restChifa/navegation.html' %} 
+
+{% if menu_objects %}
+    <ul>
+    {% for menu in menu_objects %}     
+        {% if menu.name_menu %}        
+            <a href="./menu/{{menu.name_menu}}"><li><h3>{{ menu.name_menu|upper }}</h3></li></a>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No menus are available.</p>
+{% endif %}
+
+
+
+
+

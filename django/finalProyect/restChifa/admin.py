@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Restaurant, Reserve, Dish, Dish_menu, Contact, Contact_Phone, Contact_Mail
+from .models import Restaurant, Reserve, Dish, Menu, Contact, Contact_Phone, Contact_Mail
 
 class PK_Default_Admin(admin.ModelAdmin):
     search_fields = ['id']
@@ -11,7 +11,7 @@ class PK_Default_Admin(admin.ModelAdmin):
 admin.site.register(Restaurant)
 admin.site.register(Reserve, PK_Default_Admin)
 admin.site.register(Dish)
-admin.site.register(Dish_menu)
-admin.site.register(Contact)
+admin.site.register(Menu)
+admin.site.register(Contact, PK_Default_Admin)
 admin.site.register(Contact_Phone)
 admin.site.register(Contact_Mail)

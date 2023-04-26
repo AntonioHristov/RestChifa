@@ -8,7 +8,7 @@ import pytz
 from django.conf import settings
 
 
-from .models import Restaurant, Reserve, Dish, Dish_menu, Contact, Contact_Phone, Contact_Mail
+from .models import Restaurant, Reserve, Dish, Menu, Contact, Contact_Phone, Contact_Mail
 from .common import get_datetime_operation_add
 
 
@@ -17,7 +17,7 @@ def index(request):
     context = {
         'dish_objects': dish_objects
         }
-    return render(request, 'restChifa/menu.html', context)
+    return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
     restaurant_objects = Restaurant.objects.all()
@@ -37,6 +37,23 @@ def dish_detail(request, name_dish):
     except Dish.DoesNotExist:
         dish = False
     return render(request, 'restChifa/dish_detail.html', {'dish': dish})
+
+
+def menus(request):
+    menu_objects = Menu.objects.values('name_menu').distinct().all()
+
+    context = {
+        'menu_objects': menu_objects
+        }
+    return render(request, 'restChifa/menus.html', context)
+
+
+def menu_detail(request, name_menu):
+    try:
+        menu_objects = Menu.objects.filter(name_menu=name_menu)
+    except Menu.DoesNotExist:
+        menu_objects = False
+    return render(request, 'restChifa/menu_detail.html', {'name_menu': name_menu, 'menu_objects': menu_objects})
 
 
 def reserve(request):
