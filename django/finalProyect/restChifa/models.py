@@ -50,11 +50,17 @@ class Dish(models.Model):
         return self.name_dish
 
 class Menu(models.Model):
-    name_menu = models.CharField(max_length=200, blank = False, null = False)
-    name_dish = models.ForeignKey(Dish, on_delete=models.CASCADE, blank = False, null = False)
+    name = models.CharField(primary_key=True, max_length=200, blank = False, null = False)
 
     def __str__(self):
-        return self.name_menu
+        return self.name
+
+class Menu_Dish(models.Model):
+    name_menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    name_dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Menu: " + self.name_menu.name + " | Plato: " + self.name_dish.name_dish
 
 class Contact(models.Model):
     name = models.CharField(max_length=200, blank = False, null = False)

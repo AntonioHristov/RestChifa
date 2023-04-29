@@ -2,12 +2,16 @@
 
 {% include 'restChifa/navegation.html' %} 
 
+<h2>PLATOS POPULARES</h2>
 
+{% if page_object.object_list %}
+    <ul>
+    {% for dish in page_object.object_list %}
+        <a class="active" href="./dish/{{dish.name_dish}}"><li><h3>{{ dish.name_dish|upper }}</h3></li></a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay platos.</p>
+{% endif %}
 
-
-
-
-
-
-
-
+{% include 'restChifa/paginator.html' %} 

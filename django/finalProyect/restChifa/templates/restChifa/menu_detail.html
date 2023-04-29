@@ -4,12 +4,12 @@
 
 
 {% if menu_objects %}
-    <h2> {{name_menu}} </h2>
+    <h2> {{ menu_objects.name }} </h2>
     <ul>
-    {% for menu in menu_objects %}     
-        <a href="../dish/{{menu.name_dish.name_dish}}"><li><h3>{{ menu.name_dish.name_dish|upper }}</h3></li></a>
+    {% for menu_dish in menu_dish_objects %}     
+        <a href="../dish/{{menu_dish.name_dish.name_dish}}"><li><h3>{{ menu_dish.name_dish.name_dish|upper }}</h3></li></a>
     {% endfor %}
     </ul>
 {% else %}
-<h1>Menu no encontrado...</h1>
+    <h1>Menu no encontrado...</h1>
 {% endif %}

@@ -6,25 +6,30 @@ from django.utils.timezone import get_current_timezone
 import datetime
 import pytz
 from django.conf import settings
+from django.core.paginator import Paginator
+from django.views.generic import ListView
 
 
-from .models import Restaurant, Reserve, Dish, Menu, Contact, Contact_Phone, Contact_Mail
+from .models import Restaurant, Reserve, Dish, Menu, Menu_Dish, Contact, Contact_Phone, Contact_Mail
 from .common import get_datetime_operation_add
 
 
 def index(request):
-    dish_objects = Dish.objects.all()
+    dish_objects = Dish.objects.all().order_by('-popular', 'name_dish')
+    paginator = Paginator(dish_objects, 1)
+    page_number = request.GET.get("page")
+    page_object = paginator.get_page(page_number)
+
+
     context = {
-        'dish_objects': dish_objects
+        "page_object": page_object
         }
     return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
-    restaurant_objects = Restaurant.objects.all()
     dish_objects = Dish.objects.all()
     dish_categories = Dish.objects.values_list('category', flat=True).distinct().all()
     context = {
-        'restaurant_objects': restaurant_objects,
         'dish_objects': dish_objects,
         'dish_categories': dish_categories
         }
@@ -40,7 +45,7 @@ def dish_detail(request, name_dish):
 
 
 def menus(request):
-    menu_objects = Menu.objects.values('name_menu').distinct().all()
+    menu_objects = Menu.objects.all()
 
     context = {
         'menu_objects': menu_objects
@@ -50,10 +55,16 @@ def menus(request):
 
 def menu_detail(request, name_menu):
     try:
-        menu_objects = Menu.objects.filter(name_menu=name_menu)
+        menu_objects = Menu.objects.filter(pk__iexact=name_menu)
     except Menu.DoesNotExist:
         menu_objects = False
-    return render(request, 'restChifa/menu_detail.html', {'name_menu': name_menu, 'menu_objects': menu_objects})
+
+    try:
+        menu_dish_objects = Menu_Dish.objects.filter(name_menu=name_menu)
+    except Menu_Dish.DoesNotExist:
+        menu_dish_objects = False
+
+    return render(request, 'restChifa/menu_detail.html', {'menu_objects': menu_objects, 'menu_dish_objects': menu_dish_objects})
 
 
 def reserve(request):
@@ -189,3 +200,7 @@ def data_reserves(request):
         }
     return render(request, 'restChifa/data_reserves.html', context)
 
+
+class DishListView(ListView):
+    paginate_by = 1
+    model = Dish

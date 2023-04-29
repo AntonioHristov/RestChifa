@@ -3,7 +3,6 @@
 {% include 'restChifa/navegation.html' %} 
 
 {% if dish_categories %}
-
     {% for dish_category in dish_categories %}
         <h2>{{ dish_category|upper }}</h2>
         {% if dish_objects %}
@@ -15,11 +14,11 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>No dishes are available.</p>
+            <p>No hay platos.</p>
         {% endif %}
     {% endfor %}
 {% else %}
-    <p>No dishes categories are available.</p>
+    <p>No hay categoría de platos.</p>
 {% endif %}
 
 
