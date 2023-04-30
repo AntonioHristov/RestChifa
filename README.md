@@ -3,8 +3,6 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-ordenar platos de menu principal por popularidad con un limite constante definido en settings,
-validar y guardar los prefijos de telefono del usuario,
 paginar las páginas restantes (lo que hice con los platos populares en el menú principal, no mostrarlos todos a la vez, sino en grupos de x platos)
 crear logo,
 intentar hacer la pagina bonita, probablemente con bootstrap,

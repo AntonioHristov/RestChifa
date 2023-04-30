@@ -14,7 +14,6 @@ class Restaurant(models.Model):
         return self.name_restaurant
 
 
-
 class Reserve(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, blank = False, null = False)

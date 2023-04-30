@@ -4,7 +4,7 @@
 
 <br><br><br>
 
-<form method="POST">
+<form method="POST" id="form">
     {% csrf_token %}
 
     <label for="name_reserve_name">Nombre: </label>
@@ -16,6 +16,7 @@
     <br><br>
 
     <label for="name_reserve_tlf">Teléfono: </label>
+    <input name="name_reserve_prefix_tlf" type="tel" placeholder="Escribe el prefijo" value="{{ post.name_reserve_prefix_tlf }}"/>
     <input id="id_reserve_tlf" name="name_reserve_tlf" type="tel" placeholder="Escribe tu número de teléfono aquí" value="{{ post.name_reserve_tlf }}"/>
     <div>
         {{ post.error.tlf }}
@@ -82,34 +83,3 @@
     <br><br>
     <input type="reset" value="Borrar Datos Formulario">
 </form>
-
-
-
-
-
-
-
-
-
-
-
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-
-<script>
-    const phoneInputField = document.querySelector("#id_reserve_tlf");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-      utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-</script>
-
-
-
-
-
-
-

@@ -8,6 +8,7 @@ import pytz
 from django.conf import settings
 from django.core.paginator import Paginator
 from django.views.generic import ListView
+import re
 
 
 from .models import Restaurant, Reserve, Dish, Menu, Menu_Dish, Contact, Contact_Phone, Contact_Mail
@@ -16,7 +17,7 @@ from .common import get_datetime_operation_add
 
 def index(request):
     dish_objects = Dish.objects.all().order_by('-popular', 'name_dish')
-    paginator = Paginator(dish_objects, 1)
+    paginator = Paginator(dish_objects, settings.PAGINATOR_PER_PAGE)
     page_number = request.GET.get("page")
     page_object = paginator.get_page(page_number)
 
@@ -81,6 +82,8 @@ def reserve(request):
 
     if request.method=='POST' and request.POST:
         name=request.POST['name_reserve_name']
+        prefix_phone=request.POST['name_reserve_prefix_tlf'] 
+        validate_prefix_phone_pattern = "^\\+?[1-9]{1,2}([0-9]?|\\-?){0,5}$"
         phone=request.POST['name_reserve_tlf']
         date_local=request.POST['name_reserve_date']
 
@@ -123,10 +126,16 @@ def reserve(request):
         elif len(name) > 200 :
             errorname = "El nombre no debe tener más de 200 caracteres"
 
-        if phone == "" or phone.isspace() or not phone.isnumeric() :
+        if not re.match(validate_prefix_phone_pattern, prefix_phone) :
+            errortlf = "El prefijo no es válido, [contenido] = opcional. El formato es: [+](Número del 1 al 9)[(Número del 0 al 9 o carácter -)] (Los caracteres totales deben ser entre 1 y 7)"
+        elif phone == "" or phone.isspace() or not phone.isnumeric() :
             errortlf = "El teléfono no debe estar vacío y debe ser un número entero no negativo"
-        elif len(phone) > 15 :
-            errortlf = "El teléfono no debe tener más de 15 caracteres"
+        elif len(phone) < 9 :
+            errortlf = "El teléfono no debe tener menos de 9 caracteres"
+        elif len(phone) > 14 :
+            errortlf = "El teléfono no debe tener más de 14 caracteres"
+        else :
+            phone = str(prefix_phone) + " " + str(phone)
 
         if date_utc == "" or date_utc < get_datetime_operation_add(timezone.now(), settings.DAYS_IN_ADVANCE_RESERVES, settings.SECONDS_IN_ADVANCE_RESERVES) :
             errordate = "Elige una fecha válida, debe haber al menos 1 hora de diferencia"
@@ -162,6 +171,7 @@ def reserve(request):
 
     post = {
     'name_reserve_name': request.POST.get("name_reserve_name", ""),
+    'name_reserve_prefix_tlf': request.POST.get("name_reserve_prefix_tlf", ""),
     'name_reserve_tlf': request.POST.get("name_reserve_tlf", ""),
     'name_reserve_date': request.POST.get("name_reserve_date", ""),
     'name_reserve_restaurant': request.POST.get("name_reserve_restaurant", ""),
