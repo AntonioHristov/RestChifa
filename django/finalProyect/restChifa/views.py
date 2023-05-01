@@ -6,21 +6,16 @@ from django.utils.timezone import get_current_timezone
 import datetime
 import pytz
 from django.conf import settings
-from django.core.paginator import Paginator
 from django.views.generic import ListView
 import re
+from .common import Common
 
 
 from .models import Restaurant, Reserve, Dish, Menu, Menu_Dish, Contact, Contact_Phone, Contact_Mail
-from .common import get_datetime_operation_add
 
 
 def index(request):
-    dish_objects = Dish.objects.all().order_by('-popular', 'name_dish')
-    paginator = Paginator(dish_objects, settings.PAGINATOR_PER_PAGE)
-    page_number = request.GET.get("page")
-    page_object = paginator.get_page(page_number)
-
+    page_object = Common.get_paginator(request, Dish.objects.all().order_by('-popular', 'name_dish'))
 
     context = {
         "page_object": page_object
@@ -28,11 +23,12 @@ def index(request):
     return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
+    page_object = Common.get_paginator(request, Dish.objects.values_list('category', flat=True).distinct().all(), 1)
     dish_objects = Dish.objects.all()
-    dish_categories = Dish.objects.values_list('category', flat=True).distinct().all()
+
     context = {
-        'dish_objects': dish_objects,
-        'dish_categories': dish_categories
+        'page_object': page_object,
+        'dish_objects': dish_objects
         }
     return render(request, 'restChifa/dishes.html', context)
 
@@ -46,10 +42,10 @@ def dish_detail(request, name_dish):
 
 
 def menus(request):
-    menu_objects = Menu.objects.all()
+    page_object = Common.get_paginator(request, Menu.objects.all())
 
     context = {
-        'menu_objects': menu_objects
+        'page_object': page_object
         }
     return render(request, 'restChifa/menus.html', context)
 
@@ -137,7 +133,7 @@ def reserve(request):
         else :
             phone = str(prefix_phone) + " " + str(phone)
 
-        if date_utc == "" or date_utc < get_datetime_operation_add(timezone.now(), settings.DAYS_IN_ADVANCE_RESERVES, settings.SECONDS_IN_ADVANCE_RESERVES) :
+        if date_utc == "" or not Common.is_valid_date_reserve(date_utc) :
             errordate = "Elige una fecha válida, debe haber al menos 1 hora de diferencia"
 
         if name_restaurant == "" :
@@ -191,21 +187,21 @@ def reserve(request):
 
 
 def contact(request):
-    contact_objects = Contact.objects.all()
+    page_object = Common.get_paginator(request, Contact.objects.all(), 1)
     context = {
-        'contact_objects': contact_objects
+        'page_object': page_object
         }
     return render(request, 'restChifa/contact.html', context)
 
 
 
 def data_reserves(request):
-    reserve_objects = Reserve.objects.all().order_by('date_utc')#[:5]
+    #page_object = Common.get_paginator(request, Reserve.objects.all().order_by('date_utc'), 1)
+    page_object = Common.get_paginator(request, Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc'), 1)
     user_timezone = settings.TIME_ZONE_USER
 
-
     context = {
-        'reserve_objects': reserve_objects,
+        'page_object': page_object,
         'user_timezone': user_timezone
         }
     return render(request, 'restChifa/data_reserves.html', context)

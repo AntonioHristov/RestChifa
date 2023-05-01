@@ -1,15 +1,18 @@
-<h1>PLATOS</h1>
+<h1>MENUS</h1>
 
 {% include 'restChifa/navegation.html' %} 
 
-{% if menu_objects %}
+{% if page_object.object_list %}
+    <br><br><br>
+    {% include 'restChifa/paginator.html' %}
     <ul>
-    {% for menu in menu_objects %}     
+    {% for menu in page_object.object_list %}     
         {% if menu.name %}        
             <a href="./menu/{{menu.name}}"><li><h3>{{ menu.name|upper }}</h3></li></a>
         {% endif %}
     {% endfor %}
     </ul>
+    {% include 'restChifa/paginator.html' %} 
 {% else %}
     <p>No menus are available.</p>
 {% endif %}

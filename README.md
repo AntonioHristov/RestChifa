@@ -3,8 +3,6 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-paginar las páginas restantes (lo que hice con los platos populares en el menú principal, no mostrarlos todos a la vez, sino en grupos de x platos)
-crear logo,
 intentar hacer la pagina bonita, probablemente con bootstrap,
 Crear datos guiandome de la pagina chifadomari
 
@@ -16,7 +14,8 @@ poder buscar por pk en admin
 boton reset despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission)
 crear una barra de búsqueda que filtre los resultados,
 datos reservas solo visible para los administradores,
-en página platos los menus que toquen (detectando el dia, etc)
+en página principal los menus que toquen (detectando el dia, etc),
+paginar pagina platos por categorias, con desplegable de categorias disponibles e ir a la seleccionada,
 intentar de nuevo conseguir la hora local del usuario o guardar una lista y dar a elegir la zona horaria en el formulario,
 validaciones del formulario en cliente, probablemente con javascript,
 crear algún restaurante más y considerar datos distintos entre ellos,

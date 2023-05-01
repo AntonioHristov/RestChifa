@@ -1,30 +1,25 @@
-<h1>DATOS</h1>
+<h1>PRÓXIMAS RESERVAS</h1>
 
 {% include 'restChifa/navegation.html' %} 
 
-<h2>RESERVAS</h2>
-
-{% if reserve_objects %}
-{% load tz %}
-
-{% for reserve in reserve_objects %}
-    <br><br>
-    <p>Nombre: {{ reserve.name }}</p>
-    <p>Teléfono: {{ reserve.phone }}</p>
-    <p>Fecha LOCAL: {{ reserve.date_utc|timezone:user_timezone }}</p>
-    <p>Fecha UTC: {{ reserve.date_utc }}</p>
-    <p>Restaurante: {{ reserve.name_restaurant }}</p>
-    <p>Cantidad Personas: {{ reserve.number_people }}</p>
-    <p>Email: {{ reserve.email }}</p>
-    <p>Otros Datos: {{ reserve.other }}</p>
-    <br><br>
-
-
-
-{% endfor %}
-
+{% if page_object.object_list %}
+    <br><br><br>
+    {% include 'restChifa/paginator.html' %}
+    {% load tz %}
+    {% for reserve in page_object.object_list %}
+        <p>Id: {{ reserve.id }}</p>
+        <p>Nombre: {{ reserve.name }}</p>
+        <p>Teléfono: {{ reserve.phone }}</p>
+        <p>Fecha LOCAL: {{ reserve.date_utc|timezone:user_timezone }}</p>
+        <p>Fecha UTC: {{ reserve.date_utc }}</p>
+        <p>Restaurante: {{ reserve.name_restaurant }}</p>
+        <p>Cantidad Personas: {{ reserve.number_people }}</p>
+        <p>Email: {{ reserve.email }}</p>
+        <p>Otros Datos: {{ reserve.other }}</p>
+        <br>
+    {% endfor %}
 {% else %}
-<p>No reserves types are available.</p>
+    <p>No reserves types are available.</p>
 {% endif %}
 
 

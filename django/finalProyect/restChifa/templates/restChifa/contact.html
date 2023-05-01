@@ -2,21 +2,18 @@
 
 {% include 'restChifa/navegation.html' %} 
 
-<h2>CONTACTO</h2>
-
-{% if contact_objects %}
-
-{% for contact in contact_objects %}
-    <br><br>
-    <p>Nombre: {{ contact.name }}</p>
-    <p>Teléfono: {{ contact.main_phone }}</p>
-    <p>Email: {{ contact.main_email }}</p>
-    <p>Otros Datos: {{ contact.other }}</p>
-    <br><br>
-{% endfor %}
-
+{% if page_object.object_list %}
+    <br><br><br>
+    {% include 'restChifa/paginator.html' %}
+    {% for contact in page_object.object_list %}
+        <p>Nombre: {{ contact.name }}</p>
+        <p>Teléfono: {{ contact.main_phone }}</p>
+        <p>Email: {{ contact.main_email }}</p>
+        <p>Otros Datos: {{ contact.other }}</p>
+        <br>
+    {% endfor %}
 {% else %}
-<p>No contact types are available.</p>
+    <p>No contact types are available.</p>
 {% endif %}
 
 

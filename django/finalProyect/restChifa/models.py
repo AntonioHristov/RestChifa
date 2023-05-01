@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.conf import settings
-from .common import get_datetime_operation_add
+from .common import Common
 
 # Create your models here.
 
@@ -28,10 +28,14 @@ class Reserve(models.Model):
     def __str__(self):
         return 'ID: {}'.format(self.pk)
 
-    def __is_valid__(self):
+    def __is_valid_bool__(self):
         days_more = settings.DAYS_IN_ADVANCE_RESERVES
         seconds_more = settings.SECONDS_IN_ADVANCE_RESERVES
-        return self.date_utc > get_datetime_operation_add(timezone.now(),days_more,seconds_more)
+        return self.date_utc > Common.get_datetime_operation_add(timezone.now(),days_more,seconds_more)
+
+    def __is_valid_this__(self):
+        if __is_valid_bool__(self):
+            return self
 
 
 

@@ -2,8 +2,10 @@
 
 {% include 'restChifa/navegation.html' %} 
 
-{% if dish_categories %}
-    {% for dish_category in dish_categories %}
+{% if page_object.object_list %}
+    <br><br><br>
+    {% include 'restChifa/paginator.html' %}
+    {% for dish_category in page_object.object_list %}
         <h2>{{ dish_category|upper }}</h2>
         {% if dish_objects %}
             <ul>
