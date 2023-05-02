@@ -1,21 +1,38 @@
-<h1>MENUS</h1>
-
 {% include 'restChifa/navegation.html' %} 
 
-{% if page_object.object_list %}
-    <br><br><br>
-    {% include 'restChifa/paginator.html' %}
-    <ul>
-    {% for menu in page_object.object_list %}     
-        {% if menu.name %}        
-            <a href="./menu/{{menu.name}}"><li><h3>{{ menu.name|upper }}</h3></li></a>
-        {% endif %}
-    {% endfor %}
-    </ul>
-    {% include 'restChifa/paginator.html' %} 
-{% else %}
-    <p>No menus are available.</p>
-{% endif %}
+<div class="container my-3">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>MENUS</h1>
+        </div>
+    </div>
+
+    {% if page_object.object_list %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {% include 'restChifa/paginator.html' %}
+            </div>
+        </div>
+        <ul>
+        {% for menu in page_object.object_list %}     
+            {% if menu.name %}      
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <a href="./menu/{{menu.name}}"><li><h3>{{ menu.name|upper }}</h3></li></a>
+                    </div>
+                </div>  
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>No hay menus.</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
 
 
 

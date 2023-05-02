@@ -1,20 +1,58 @@
-<h1>PLATO DETALLADO</h1>
-
 {% include 'restChifa/navegation.html' %} 
 
-
-{% if dish %}
-
-<ul>
-    <li><h2>Nombre: {{ dish.name_dish|upper }}</h1></li>
-    <li><h2>Tipo: {{ dish.type|capfirst }}</h2></li>
-    <li><h2>Categoría: {{ dish.category|capfirst }}</h2></li>
-    <li><h2>Descripción: {{ dish.description|capfirst }}</h2></li>
-    <li><h2>Precio: {{ dish.price }}€</h2></li>
-    <li><h2><img src="./../../static/restChifa/img/dishes/{{dish.src_photo}}" height="200em" width="200em"/></h2></li>
-    <li><h2>Popularidad: Pedido {{ dish.popular }} veces</h2></li>
-</ul>
-
-{% else %}
-<h1>Plato no encontrado...</h1>
-{% endif %}
+<div class="container my-3">
+    
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>PLATO DETALLADO</h1>
+        </div>
+    </div>
+    
+    {% if dish %}
+    
+    <ul>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <li><h2>Nombre: {{ dish.name_dish|upper }}</h1></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <li><h2>Tipo: {{ dish.type|capfirst }}</h2></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <li><h2>Categoría: {{ dish.category|capfirst }}</h2></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <li><h2>Descripción: {{ dish.description|capfirst }}</h2></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <li><h2>Precio: {{ dish.price }}€</h2></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <li><h2><img src="./../../static/restChifa/img/dishes/{{dish.src_photo}}" height="200em" width="200em"/></h2></li>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <li><h2>Popularidad: Pedido {{ dish.popular }} veces</h2></li>
+            </div>
+        </div>
+    </ul>
+    
+    {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h1>Plato no encontrado...</h1>
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -1,15 +1,33 @@
-<h1>MENU DETALLADO</h1>
-
 {% include 'restChifa/navegation.html' %} 
 
+<div class="container my-3">
 
-{% if menu_objects %}
-    <h2> {{ menu_objects.name }} </h2>
-    <ul>
-    {% for menu_dish in menu_dish_objects %}     
-        <a href="../dish/{{menu_dish.name_dish.name_dish}}"><li><h3>{{ menu_dish.name_dish.name_dish|upper }}</h3></li></a>
-    {% endfor %}
-    </ul>
-{% else %}
-    <h1>Menu no encontrado...</h1>
-{% endif %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>MENU DETALLADO</h1>
+        </div>
+    </div>
+    
+    {% if menu_objects %}
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h2> {{ menu_objects.name }} </h2>
+            </div>
+        </div>
+        <ul>
+            {% for menu_dish in menu_dish_objects %}    
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <a href="../dish/{{menu_dish.name_dish.name_dish}}"><li><h3>{{ menu_dish.name_dish.name_dish|upper }}</h3></li></a>
+                    </div>
+                </div> 
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <h1>Menu no encontrado...</h1>
+            </div>
+        </div>
+    {% endif %}
+</div>

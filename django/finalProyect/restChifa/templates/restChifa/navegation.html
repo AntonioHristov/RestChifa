@@ -1,7 +1,40 @@
-<!--<a href="{{settings.PATH_PROYECT}}"><button>Menú Principal</button></a> Not working-->
+<!-- Bootstrap -->
+<link rel="stylesheet" href="./../../static/restChifa/css/bootstrap/bootstrap.min.css" />
+<script defer src="./../../static/restChifa/js/bootstrap/bootstrap.bundle.js"></script>
+
+        
+<!--
+<a href="{{settings.PATH_PROYECT}}"><button>Menú Principal</button></a> Not working
 <a href="{{settings.BASE_DIR}}/restChifa/"><button>Menú Principal</button></a>
 <a href="{{settings.BASE_DIR}}/restChifa/dishes"><button>Platos</button></a>
 <a href="{{settings.BASE_DIR}}/restChifa/menus"><button>Menus</button></a>
 <a href="{{settings.BASE_DIR}}/restChifa/reserve"><button>Reservar</button></a>
 <a href="{{settings.BASE_DIR}}/restChifa/contact"><button>Contacto</button></a>
 <a href="{{settings.BASE_DIR}}/restChifa/data_reserves"><button>Próximas Reservas</button></a>
+-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand active">
+            <img src="./../../static/restChifa/img/logo/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            RestChifa
+        </a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link {{ nav_index_active }}" aria-current="page" href="{{settings.BASE_DIR}}/restChifa/">Menú Principal</a>
+                <a class="nav-link {{ nav_dishes_active }}" href="{{settings.BASE_DIR}}/restChifa/dishes">Platos</a>
+                <a class="nav-link {{ nav_menus_active }}" href="{{settings.BASE_DIR}}/restChifa/menus">Menus</a>
+                <a class="nav-link {{ nav_reserve_active }}" href="{{settings.BASE_DIR}}/restChifa/reserve">Reservar</a>
+                <a class="nav-link {{ nav_contact_active }}" href="{{settings.BASE_DIR}}/restChifa/contact">Contacto</a>
+                <a class="nav-link {{ nav_data_reserves_active }}" href="{{settings.BASE_DIR}}/restChifa/data_reserves">Próximas Reservas</a>
+            </div>
+        </div>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+    </div>
+</nav>

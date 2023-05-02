@@ -3,6 +3,7 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
+Aplicar bootstrap al formulario reservas
 intentar hacer la pagina bonita, probablemente con bootstrap,
 Crear datos guiandome de la pagina chifadomari
 

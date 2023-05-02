@@ -1,29 +1,54 @@
-<h1>PLATOS</h1>
-
 {% include 'restChifa/navegation.html' %} 
 
-{% if page_object.object_list %}
-    <br><br><br>
-    {% include 'restChifa/paginator.html' %}
-    {% for dish_category in page_object.object_list %}
-        <h2>{{ dish_category|upper }}</h2>
-        {% if dish_objects %}
-            <ul>
-            {% for dish in dish_objects %}
-                {% if dish.category == dish_category %}
-                    <a href="./dish/{{dish.name_dish}}"><li><h3>{{ dish.name_dish|upper }}</h3></li></a>
-                {% endif %}
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No hay platos.</p>
-        {% endif %}
-    {% endfor %}
-{% else %}
-    <p>No hay categoría de platos.</p>
-{% endif %}
+<div class="container my-3">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>PLATOS</h1>
+        </div>
+    </div>
 
 
+    {% if page_object.object_list %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {% include 'restChifa/paginator.html' %}
+            </div>
+        </div>
+        {% for dish_category in page_object.object_list %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h2>{{ dish_category|upper }}</h2>
+                </div>
+            </div>
+            {% if dish_objects %}
+                <ul>
+                {% for dish in dish_objects %}
+                    {% if dish.category == dish_category %}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <a href="./dish/{{dish.name_dish}}"><li><h3>{{ dish.name_dish|upper }}</h3></li></a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% else %}
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <p>No hay platos.</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>No hay categoría de platos.</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
 
 
 

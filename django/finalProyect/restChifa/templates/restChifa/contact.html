@@ -1,20 +1,47 @@
-<h1>CONTACTO</h1>
-
 {% include 'restChifa/navegation.html' %} 
-
-{% if page_object.object_list %}
-    <br><br><br>
-    {% include 'restChifa/paginator.html' %}
-    {% for contact in page_object.object_list %}
-        <p>Nombre: {{ contact.name }}</p>
-        <p>Teléfono: {{ contact.main_phone }}</p>
-        <p>Email: {{ contact.main_email }}</p>
-        <p>Otros Datos: {{ contact.other }}</p>
-        <br>
-    {% endfor %}
-{% else %}
-    <p>No contact types are available.</p>
-{% endif %}
+<div class="container my-3">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>CONTACTO</h1>
+        </div>
+    </div>
+    
+    {% if page_object.object_list %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {% include 'restChifa/paginator.html' %}
+            </div>
+        </div>
+        {% for contact in page_object.object_list %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <p>Nombre: {{ contact.name }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <p>Teléfono: {{ contact.main_phone }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <p>Email: {{ contact.main_email }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <p>Otros Datos: {{ contact.other }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>No hay contactos.</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
 
 
 

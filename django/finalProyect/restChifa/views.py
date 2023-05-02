@@ -16,19 +16,23 @@ from .models import Restaurant, Reserve, Dish, Menu, Menu_Dish, Contact, Contact
 
 def index(request):
     page_object = Common.get_paginator(request, Dish.objects.all().order_by('-popular', 'name_dish'))
+    nav_index_active = "active"
 
     context = {
-        "page_object": page_object
+        "page_object": page_object,
+        "nav_index_active": nav_index_active
         }
     return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
     page_object = Common.get_paginator(request, Dish.objects.values_list('category', flat=True).distinct().all(), 1)
     dish_objects = Dish.objects.all()
+    nav_dishes_active = "active"
 
     context = {
         'page_object': page_object,
-        'dish_objects': dish_objects
+        'dish_objects': dish_objects,
+        "nav_dishes_active": nav_dishes_active
         }
     return render(request, 'restChifa/dishes.html', context)
 
@@ -38,14 +42,23 @@ def dish_detail(request, name_dish):
         dish = Dish.objects.get(pk__iexact=name_dish)
     except Dish.DoesNotExist:
         dish = False
-    return render(request, 'restChifa/dish_detail.html', {'dish': dish})
+
+    nav_dishes_active = "active"
+
+    context = {
+    'dish': dish,
+    "nav_dishes_active": nav_dishes_active
+    }
+    return render(request, 'restChifa/dish_detail.html', context)
 
 
 def menus(request):
     page_object = Common.get_paginator(request, Menu.objects.all())
+    nav_menus_active = "active"
 
     context = {
-        'page_object': page_object
+        'page_object': page_object,
+        "nav_menus_active": nav_menus_active
         }
     return render(request, 'restChifa/menus.html', context)
 
@@ -61,11 +74,20 @@ def menu_detail(request, name_menu):
     except Menu_Dish.DoesNotExist:
         menu_dish_objects = False
 
-    return render(request, 'restChifa/menu_detail.html', {'menu_objects': menu_objects, 'menu_dish_objects': menu_dish_objects})
+    nav_menus_active = "active"
+
+    context = {
+        'menu_objects': menu_objects, 
+        'menu_dish_objects': menu_dish_objects,
+        "nav_menus_active": nav_menus_active
+        }
+
+    return render(request, 'restChifa/menu_detail.html', context)
 
 
 def reserve(request):
     restaurant_objects = Restaurant.objects.all()
+    nav_reserve_active = "active"
 
     success = ""
     errorname = ""
@@ -180,7 +202,8 @@ def reserve(request):
         
     context = {
     'restaurant_objects': restaurant_objects,
-    'post': post
+    'post': post,
+    "nav_reserve_active": nav_reserve_active
     }
 
     return render(request,'restChifa/reserve.html', context)
@@ -188,8 +211,11 @@ def reserve(request):
 
 def contact(request):
     page_object = Common.get_paginator(request, Contact.objects.all(), 1)
+    nav_contact_active = "active"
+
     context = {
-        'page_object': page_object
+        'page_object': page_object,
+        "nav_contact_active": nav_contact_active
         }
     return render(request, 'restChifa/contact.html', context)
 
@@ -199,10 +225,12 @@ def data_reserves(request):
     #page_object = Common.get_paginator(request, Reserve.objects.all().order_by('date_utc'), 1)
     page_object = Common.get_paginator(request, Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc'), 1)
     user_timezone = settings.TIME_ZONE_USER
+    nav_data_reserves_active = "active"
 
     context = {
         'page_object': page_object,
-        'user_timezone': user_timezone
+        'user_timezone': user_timezone,
+        "nav_data_reserves_active": nav_data_reserves_active
         }
     return render(request, 'restChifa/data_reserves.html', context)
 

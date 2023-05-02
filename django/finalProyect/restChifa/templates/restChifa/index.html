@@ -1,17 +1,44 @@
-<h1>BIENVENIDO A RESTCHIFA</h1>
 {% include 'restChifa/navegation.html' %} 
-{% include 'restChifa/logo.html' %} 
 
-<h2>PLATOS POPULARES</h2>
+<div class="container my-3">
+   
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>BIENVENIDO A RESTCHIFA</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            {% include 'restChifa/logo.html' %}
+        </div>
+    </div>
 
-{% if page_object.object_list %}
-    <br><br><br>
-    {% include 'restChifa/paginator.html' %}
-    <ul>
-    {% for dish in page_object.object_list %}
-        <a class="active" href="./dish/{{dish.name_dish}}"><li><h3>{{ dish.name_dish|upper }}</h3></li></a>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No hay platos.</p>
-{% endif %}
+    <div class="row my-3">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h2>PLATOS POPULARES</h2>
+        </div>
+    </div>
+    {% if page_object.object_list %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                {% include 'restChifa/paginator.html' %}
+            </div>
+        </div>
+        
+        <ul>
+        {% for dish in page_object.object_list %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <a class="active" href="./dish/{{dish.name_dish}}"><li><h3>{{ dish.name_dish|upper }}</h3></li></a>
+                </div>
+            </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>No hay platos.</p>
+            </div>
+        </div>
+    {% endif %}
+</div>
