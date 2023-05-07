@@ -3,85 +3,90 @@
 <div class="container my-3">
     <h1>RESERVA</h1>
     
-    <br><br><br>
+
     
-    <form method="POST" id="form">
+    <form class="form-floating mb-3" method="POST">
         {% csrf_token %}
-    
-        <label for="name_reserve_name">Nombre: </label>
-        <input name="name_reserve_name" type="text" placeholder="Escribe tu nombre aquí" value="{{ post.name_reserve_name }}"/>
-        <div>
-            {{ post.error.name }}
+        
+        <div class="mb-3">
+            <label class="form-label" for="name_reserve_name">Nombre: </label>
+            <input class="form-control {{ post.error.add_class_is_invalid.name }}" name="name_reserve_name" type="text" placeholder="Escribe tu nombre aquí" value="{{ post.name_reserve_name }}"/>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.name }}</label>
         </div>
     
-        <br><br>
-    
-        <label for="name_reserve_tlf">Teléfono: </label>
-        <input name="name_reserve_prefix_tlf" type="tel" placeholder="Escribe el prefijo" value="{{ post.name_reserve_prefix_tlf }}"/>
-        <input id="id_reserve_tlf" name="name_reserve_tlf" type="tel" placeholder="Escribe tu número de teléfono aquí" value="{{ post.name_reserve_tlf }}"/>
-        <div>
-            {{ post.error.tlf }}
+        <div class="mb-3">
+            <label class="form-label" for="name_reserve_tlf">Teléfono: </label>
+            <input class="form-control {{ post.error.add_class_is_invalid.prefix_tlf }}" name="name_reserve_prefix_tlf" type="tel" placeholder="Escribe el prefijo del número de teléfono aquí" value="{{ post.name_reserve_prefix_tlf }}"/>
+            <input class="mt-3 form-control {{ post.error.add_class_is_invalid.tlf }}" id="id_reserve_tlf" name="name_reserve_tlf" type="number" placeholder="Escribe tu número de teléfono aquí" value="{{ post.name_reserve_tlf }}"/>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.prefix_tlf }} {{ post.error.tlf }}</label>
         </div>
     
-        <br><br>
-    
-        <label for="name_reserve_date">Fecha: </label>
-        <input name="name_reserve_date" type="datetime-local" value="{{ post.name_reserve_date }}"/>
-        <div>
-            {{ post.error.date }}
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="form-label" for="name_reserve_date">Fecha: </label>
+            <input class="form-control {{ post.error.add_class_is_invalid.date }}" name="name_reserve_date" type="datetime-local" value="{{ post.name_reserve_date }}"/>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.date }}</label>
         </div>
     
-        <br><br>
-    
-        <label for="name_reserve_restaurant">Restaurante: </label>
-        <select name="name_reserve_restaurant">
-            <option value=""></option>
-            {% if restaurant_objects %}
-            {% for restaurant in restaurant_objects %}
-                <option value="{{restaurant.name_restaurant}}" {% if restaurant.name_restaurant == post.name_reserve_restaurant %}selected{% endif %} >{{restaurant.name_restaurant}}</option>
-            {% endfor %}
-            {% endif %}
-    
-    
-        </select>
-        <div>
-            {{ post.error.restaurant }}
+        <div class="mb-3">
+            <label class="form-label" for="name_reserve_restaurant">Restaurante: </label>
+            <select class="form-select form-select-lg mb-3  {{ post.error.add_class_is_invalid.restaurant }}" name="name_reserve_restaurant">
+                <option value=""></option>
+                {% if restaurant_objects %}
+                    {% for restaurant in restaurant_objects %}
+                        <option value="{{restaurant.name_restaurant}}" {% if restaurant.name_restaurant == post.name_reserve_restaurant %}selected{% endif %} >{{restaurant.name_restaurant}}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.restaurant }}</label>
         </div>
     
-        <br><br>
-    
-        <label for="name_reserve_people">Cantidad Personas: </label>
-        <input name="name_reserve_people" type="number" min="1" value="{{ post.name_reserve_people }}"/>
-        <div>
-            {{ post.error.people }}
+        <div class="mb-3">
+            <label class="form-label" for="name_reserve_people">Cantidad Personas: </label>
+            <input class="form-control {{ post.error.add_class_is_invalid.people }}" name="name_reserve_people" type="number" min="1" value="{{ post.name_reserve_people }}"/>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.people }}</label>
         </div>
     
-        <br><br>
-    
-        <label for="name_reserve_email">Email (Opcional): </label>
-        <input name="name_reserve_email" type="email" placeholder="Escribe tu email aquí" value="{{ post.name_reserve_email }}"/>
-        <div>
-            {{ post.error.email }}
+        <div class="mb-3">
+            <label class="form-label" for="name_reserve_email">Email (Opcional): </label>
+            <input class="form-control {{ post.error.add_class_is_invalid.email }}" name="name_reserve_email" type="email" placeholder="Escribe tu email aquí" value="{{ post.name_reserve_email }}"/>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.email }}</label>
         </div>
     
-        <br><br>
-    
-        <label for="name_reserve_other">Otros (Opcional): </label>
-        <textarea name="name_reserve_other" placeholder="Datos adicionales, ejemplo: Llevas bebés, objetos que quieras guardar, etc">{{ post.name_reserve_other }}</textarea>
-        <div>
-            {{ post.error.other }}
+        <div class="mb-3">
+            <label class="form-label" for="name_reserve_other">Otros (Opcional): </label>
+            <textarea class="form-control  {{ post.error.add_class_is_invalid.other }}" name="name_reserve_other" placeholder="Datos adicionales, ejemplo: Llevas bebés, objetos que quieras guardar, etc">{{ post.name_reserve_other }}</textarea>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <label class="text-danger">{{ post.error.other }}</label>
         </div>
     
-        <br><br>
-    
-        <div id="id_reserve_success">
-            {{ post.success }}
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <b class="text-success fs-1">{{ post.success }}</b>
         </div>
-            
-        <br><br>
-    
-        <input type="submit" value="Reservar">
-        <br><br>
-        <input type="reset" value="Borrar Datos Formulario">
+     
+
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+            <input class="btn btn-primary btn-lg" type="submit" value="Reservar">
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+            <input class="btn btn-outline-secondary" type="reset" value="Borrar Datos Formulario">
+        </div>
+
+
+
+
     </form>
 </div>

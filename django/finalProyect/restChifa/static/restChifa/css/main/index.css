@@ -1,0 +1,23 @@
+body
+{
+    background-color: lightblue;
+}
+
+a li
+{
+    color: blue;
+    background-color: orange;
+}
+
+a li:hover
+{
+    color: lightpink;
+    background-color: green;
+}
+
+a button:hover
+{
+    color: white;
+    background-color: black
+}
+

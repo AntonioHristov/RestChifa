@@ -91,6 +91,7 @@ def reserve(request):
 
     success = ""
     errorname = ""
+    errorprefixtlf = ""
     errortlf = ""
     errordate = ""
     errorrestaurant = ""
@@ -145,7 +146,7 @@ def reserve(request):
             errorname = "El nombre no debe tener más de 200 caracteres"
 
         if not re.match(validate_prefix_phone_pattern, prefix_phone) :
-            errortlf = "El prefijo no es válido, [contenido] = opcional. El formato es: [+](Número del 1 al 9)[(Número del 0 al 9 o carácter -)] (Los caracteres totales deben ser entre 1 y 7)"
+            errorprefixtlf = "El prefijo no es válido, [contenido] = opcional. El formato es: [+](Número del 1 al 9)[(Número del 0 al 9 o carácter -)] (Los caracteres totales deben ser entre 1 y 7)"
         elif phone == "" or phone.isspace() or not phone.isnumeric() :
             errortlf = "El teléfono no debe estar vacío y debe ser un número entero no negativo"
         elif len(phone) < 9 :
@@ -171,20 +172,32 @@ def reserve(request):
             errorother = "Los datos extra no deben tener más de 200 caracteres"
 
 
-        if errorname == "" and errortlf == "" and errordate == "" and errorrestaurant == "" and errorpeople == "" and erroremail == "" and errorother == "" :
+        if errorname == "" and errorprefixtlf == "" and errortlf == "" and errordate == "" and errorrestaurant == "" and errorpeople == "" and erroremail == "" and errorother == "" :
             reserve = Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,name_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
             success = "Su reserva ha sido realizada con éxito. Guarda tu Identificador, es: " + str(reserve.pk)
 
 
+    add_class_is_invalid = {
+    'name': "is-invalid" if errorname != "" else "",
+    'prefix_tlf': "is-invalid" if errorprefixtlf != "" else "",
+    'tlf': "is-invalid" if errortlf != "" else "",
+    'date': "is-invalid" if errordate != "" else "",
+    'restaurant': "is-invalid" if errorrestaurant != "" else "",
+    'people': "is-invalid" if errorpeople != "" else "",
+    'email': "is-invalid" if erroremail != "" else "",
+    'other': "is-invalid" if errorother != "" else ""
+    }
 
     error = {
     'name': errorname,
+    'prefix_tlf': errorprefixtlf,
     'tlf': errortlf,
     'date': errordate,
     'restaurant': errorrestaurant,
     'people': errorpeople,
     'email': erroremail,
-    'other': errorother
+    'other': errorother,
+    'add_class_is_invalid': add_class_is_invalid
     }
 
     post = {

@@ -43,7 +43,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <li><h2>Popularidad: Pedido {{ dish.popular }} veces</h2></li>
+                <li><h2>Popularidad: Pedido {{ dish.popular }} {% if dish.popular != 1 %} veces. {% else %} vez. {% endif %}</h2></li>
             </div>
         </div>
     </ul>
