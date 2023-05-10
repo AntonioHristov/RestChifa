@@ -13,17 +13,17 @@
     <ul>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <li><h2>Nombre: {{ dish.name_dish|upper }}</h1></li>
+                <li><h2>Nombre: {{ dish.pk_name|upper }}</h1></li>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <li><h2>Tipo: {{ dish.type|capfirst }}</h2></li>
+                <li><h2>Tipo: {{ dish.fk_type.pk_name|capfirst }}</h2></li>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <li><h2>Categoría: {{ dish.category|capfirst }}</h2></li>
+                <li><h2>Categoría: {{ dish.fk_category.pk_name|capfirst }}</h2></li>
             </div>
         </div>
         <div class="row">

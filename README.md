@@ -3,20 +3,18 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-paginar pagina platos por categorias, con desplegable de categorias disponibles e ir a la seleccionada,
-Crear datos guiandome de la pagina chifadomari,
-crear telefonos e emails extra y pintarlos en la pagina contact,
-poder buscar por pk en admin,
+Pintar en la página contact los telefonos e emails extra,
+crear datos y solucionar bugs relacionados si hay,
+poder buscar por pk en admin en todos o casi todos los modelos,
 Confirmacion al reservar y reset,
 datos reservas solo visible para los administradores,
-crear una barra de búsqueda que filtre los resultados,
-pk de Menu_Dish sea un mixto de name_menu y name_dish, con barra de busqueda en admin,
+hacer que la barra de búsqueda filtre los resultados,
 textarea auto resize en reservas,
-boton reset despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission),
-en página principal los menus que toquen (detectando el dia, etc),
+boton reset funcione despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission),
+intentar que en página principal aparezcan los menus que toquen (detectando el dia, etc),
 intentar de nuevo conseguir la hora local del usuario o guardar una lista y dar a elegir la zona horaria en el formulario,
-validaciones del formulario en cliente, probablemente con javascript,
-crear algún restaurante más y considerar datos distintos entre ellos,
+validaciones del formulario en cliente con javascript,
+crear algún restaurante más y (muy opcional) considerar datos distintos entre ellos,
 actualizar los dibujos
 optimizar, limpiar el código y pensar más cosas
 
@@ -53,7 +51,6 @@ Referencias destacadas:
 	https://projectsplaza.com/how-to-save-form-data-in-database-in-django/
 	https://stackoverflow.com/questions/24710233/python-convert-time-to-utc-format
 	https://docs.djangoproject.com/en/4.2/topics/pagination/
-	http://www.chifadoromari.com
 
 
 

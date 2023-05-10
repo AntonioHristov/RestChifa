@@ -11,11 +11,11 @@ import re
 from .common import Common
 
 
-from .models import Restaurant, Reserve, Dish, Menu, Menu_Dish, Contact, Contact_Phone, Contact_Mail
+from .models import Restaurant, Reserve, Dish_type, Dish_category, Dish, Menu, Menu_Dish, Contact, Contact_Phone, Contact_Mail
 
 
 def index(request):
-    page_object = Common.get_paginator(request, Dish.objects.all().order_by('-popular', 'name_dish'))
+    page_object = Common.get_paginator(request, Dish.objects.all().order_by('-popular', 'pk_name'))
     nav_index_active = "active"
 
     context = {
@@ -25,7 +25,8 @@ def index(request):
     return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
-    page_object = Common.get_paginator(request, Dish.objects.values_list('category', flat=True).distinct().all(), 1)
+    page_object = Common.get_paginator(request, Dish.objects.values_list('fk_category', flat=True).distinct().order_by('-popular', 'pk_name').all(), 1)
+    #page_object = Common.get_paginator(request, Dish_category.objects.all(), 1)
     dish_objects = Dish.objects.all()
     nav_dishes_active = "active"
 
@@ -37,9 +38,9 @@ def dishes(request):
     return render(request, 'restChifa/dishes.html', context)
 
 
-def dish_detail(request, name_dish):
+def dish_detail(request, pk_name):
     try:
-        dish = Dish.objects.get(pk__iexact=name_dish)
+        dish = Dish.objects.get(pk__iexact=pk_name)
     except Dish.DoesNotExist:
         dish = False
 
@@ -63,22 +64,27 @@ def menus(request):
     return render(request, 'restChifa/menus.html', context)
 
 
-def menu_detail(request, name_menu):
+def menu_detail(request, pk_name):
+        
     try:
-        menu_objects = Menu.objects.filter(pk__iexact=name_menu)
+        menu_objects = Menu.objects.get(pk__iexact=pk_name)
     except Menu.DoesNotExist:
         menu_objects = False
 
     try:
-        menu_dish_objects = Menu_Dish.objects.filter(name_menu=name_menu)
+        menu_dish_objects = Menu_Dish.objects.filter(fk_menu=pk_name)
     except Menu_Dish.DoesNotExist:
         menu_dish_objects = False
 
+    page_object = Common.get_paginator(request, Dish.objects.values_list('fk_type', flat=True).distinct().order_by('-popular', 'pk_name').all(), 1)
+    dish_objects = Dish.objects.all()
     nav_menus_active = "active"
 
     context = {
         'menu_objects': menu_objects, 
         'menu_dish_objects': menu_dish_objects,
+        'page_object': page_object,
+        'dish_objects': dish_objects,
         "nav_menus_active": nav_menus_active
         }
 
@@ -131,7 +137,7 @@ def reserve(request):
 
         name_restaurant = ""
         for restaurant in restaurant_objects:
-            if restaurant.name_restaurant == request.POST['name_reserve_restaurant']:
+            if restaurant.pk_name == request.POST['name_reserve_restaurant']:
                 name_restaurant=restaurant
 
         number_people=request.POST['name_reserve_people']
@@ -173,7 +179,7 @@ def reserve(request):
 
 
         if errorname == "" and errorprefixtlf == "" and errortlf == "" and errordate == "" and errorrestaurant == "" and errorpeople == "" and erroremail == "" and errorother == "" :
-            reserve = Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,name_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
+            reserve = Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,fk_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
             success = "Su reserva ha sido realizada con éxito. Guarda tu Identificador, es: " + str(reserve.pk)
 
 

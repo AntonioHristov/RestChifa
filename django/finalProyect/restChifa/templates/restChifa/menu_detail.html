@@ -9,20 +9,51 @@
     </div>
     
     {% if menu_objects %}
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <h2> {{ menu_objects.name }} </h2>
+        {% if menu_dish_objects %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h2> {{ menu_objects.pk_name }} </h2>
+                </div>
             </div>
-        </div>
-        <ul>
-            {% for menu_dish in menu_dish_objects %}    
-                <div class="row">
+
+            {% if page_object.object_list %}
+                <div class="row my-3">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <a href="../dish/{{menu_dish.name_dish.name_dish}}"><li><h3>{{ menu_dish.name_dish.name_dish|upper }}</h3></li></a>
+                        {% include 'restChifa/paginator.html' %}
                     </div>
-                </div> 
-            {% endfor %}
-        </ul>
+                </div>
+                {% for dish_type in page_object.object_list %}
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <h2>{{ dish_type|upper }}</h2>
+                        </div>
+                    </div>
+                        <ul>
+                        {% for dish in dish_objects %}
+                            {% if dish.fk_type.pk_name == dish_type %}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <a href=".././dish/{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        </ul>
+                {% endfor %}
+            {% else %}
+                <div class="row my-3">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <h1>Hay un problema con el paginador...</h1>
+                    </div>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="row my-3">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h1>El menú con el nombre "{{ menu_objects.pk_name }}" existe pero no tiene platos</h1>
+                </div>
+            </div>
+        {% endif %}
     {% else %}
         <div class="row my-3">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">

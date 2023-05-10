@@ -39,7 +39,7 @@
                 <option value=""></option>
                 {% if restaurant_objects %}
                     {% for restaurant in restaurant_objects %}
-                        <option value="{{restaurant.name_restaurant}}" {% if restaurant.name_restaurant == post.name_reserve_restaurant %}selected{% endif %} >{{restaurant.name_restaurant}}</option>
+                        <option value="{{restaurant.pk_name}}" {% if restaurant.pk_name == post.name_reserve_restaurant %}selected{% endif %} >{{restaurant.pk_name}}</option>
                     {% endfor %}
                 {% endif %}
             </select>

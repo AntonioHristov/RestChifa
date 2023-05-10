@@ -17,7 +17,7 @@
         {% for reserve in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Id: {{ reserve.id }}</p>
+                    <p>Id: {{ reserve.pk_id }}</p>
                 </div>
             </div>
             <div class="row">
@@ -42,7 +42,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Restaurante: {{ reserve.name_restaurant }}</p>
+                    <p>Restaurante: {{ reserve.fk_restaurant }}</p>
                 </div>
             </div>
             <div class="row">
