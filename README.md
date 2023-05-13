@@ -3,8 +3,7 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-Pintar en la página contact los telefonos e emails extra,
-crear datos y solucionar bugs relacionados si hay,
+Crear datos y solucionar bugs relacionados si hay,
 poder buscar por pk en admin en todos o casi todos los modelos,
 Confirmacion al reservar y reset,
 datos reservas solo visible para los administradores,

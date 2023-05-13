@@ -230,10 +230,14 @@ def reserve(request):
 
 def contact(request):
     page_object = Common.get_paginator(request, Contact.objects.all(), 1)
+    phone_objects = Contact_Phone.objects.all()
+    mail_objects = Contact_Mail.objects.all()
     nav_contact_active = "active"
 
     context = {
         'page_object': page_object,
+        'phone_objects': phone_objects,
+        'mail_objects': mail_objects,
         "nav_contact_active": nav_contact_active
         }
     return render(request, 'restChifa/contact.html', context)

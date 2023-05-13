@@ -107,8 +107,8 @@ class Contact(models.Model):
     pk_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, blank = False, null = False)
     main_phone = models.CharField(max_length=15, blank = False, null = False)
-    main_email = models.CharField(max_length=100)
-    other = models.CharField(max_length=200)
+    main_email = models.CharField(max_length=100, blank=True)
+    other = models.CharField(max_length=200, blank=True)
 
     class Meta:
         verbose_name_plural = "Contacts"
