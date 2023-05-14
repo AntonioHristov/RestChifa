@@ -25,7 +25,7 @@ def index(request):
     return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
-    page_object = Common.get_paginator(request, Dish.objects.values_list('fk_category', flat=True).distinct().order_by('-popular', 'pk_name').all(), 1)
+    page_object = Common.get_paginator(request, Dish.objects.values_list('fk_category', flat=True).distinct().order_by('fk_category__position').all(), 1)
     #page_object = Common.get_paginator(request, Dish_category.objects.all(), 1)
     dish_objects = Dish.objects.all()
     nav_dishes_active = "active"
@@ -76,7 +76,8 @@ def menu_detail(request, pk_name):
     except Menu_Dish.DoesNotExist:
         menu_dish_objects = False
 
-    page_object = Common.get_paginator(request, Dish.objects.values_list('fk_type', flat=True).distinct().order_by('-popular', 'pk_name').all(), 1)
+    #page_object = Common.get_paginator(request, Dish.objects.values_list('fk_type', flat=True).distinct().order_by('-popular', 'pk_name').all(), 1)
+    page_object = Common.get_paginator(request, menu_dish_objects.values('fk_dish__fk_type__pk_name').distinct().order_by('fk_dish__fk_type__position').all(), 1)
     dish_objects = Dish.objects.all()
     nav_menus_active = "active"
 

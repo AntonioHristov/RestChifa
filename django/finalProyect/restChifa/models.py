@@ -46,6 +46,7 @@ class Reserve(models.Model):
 
 class Dish_type(models.Model):
     pk_name = models.CharField(primary_key=True, max_length=100, blank = False, null = False)
+    position = models.IntegerField(default=0, blank = False, null = False)
 
     class Meta:
         verbose_name_plural = "Dish_types"
@@ -56,6 +57,7 @@ class Dish_type(models.Model):
 
 class Dish_category(models.Model):
     pk_name = models.CharField(primary_key=True, max_length=100, blank = False, null = False)
+    position = models.IntegerField(default=0, blank = False, null = False)
 
     class Meta:
         verbose_name_plural = "Dish_categories"

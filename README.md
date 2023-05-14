@@ -7,6 +7,7 @@ Crear datos y solucionar bugs relacionados si hay,
 poder buscar por pk en admin en todos o casi todos los modelos,
 Confirmacion al reservar y reset,
 datos reservas solo visible para los administradores,
+datos reservas filtrados por restaurante en la url
 hacer que la barra de búsqueda filtre los resultados,
 textarea auto resize en reservas,
 boton reset funcione despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission),
