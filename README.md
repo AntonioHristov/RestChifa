@@ -3,6 +3,7 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
+Cada Menu tenga un precio,
 Crear datos y solucionar bugs relacionados si hay,
 poder buscar por pk en admin en todos o casi todos los modelos,
 Confirmacion al reservar y reset,
