@@ -26,7 +26,6 @@ def index(request):
 
 def dishes(request):
     page_object = Common.get_paginator(request, Dish.objects.values_list('fk_category', flat=True).distinct().order_by('fk_category__position').all(), 1)
-    #page_object = Common.get_paginator(request, Dish_category.objects.all(), 1)
     dish_objects = Dish.objects.all()
     nav_dishes_active = "active"
 
@@ -76,16 +75,26 @@ def menu_detail(request, pk_name):
     except Menu_Dish.DoesNotExist:
         menu_dish_objects = False
 
-    #page_object = Common.get_paginator(request, Dish.objects.values_list('fk_type', flat=True).distinct().order_by('-popular', 'pk_name').all(), 1)
-    page_object = Common.get_paginator(request, menu_dish_objects.values('fk_dish__fk_type__pk_name').distinct().order_by('fk_dish__fk_type__position').all(), 1)
-    dish_objects = Dish.objects.all()
+    try:
+        menu_dish_by_dish_objects = menu_dish_objects.values('fk_dish__fk_category__pk_name', 'fk_dish__fk_type__pk_name').distinct().order_by('fk_dish__fk_category__position').all()
+    except Menu_Dish.DoesNotExist:
+        menu_dish_by_dish_objects = False
+        
+    try:
+        page_object = Common.get_paginator(request, menu_dish_objects.values('fk_dish__fk_type__pk_name').distinct().order_by('fk_dish__fk_type__position').all(), 1)
+    except Menu_Dish.DoesNotExist:
+        page_object = False
+
+
+
+    
     nav_menus_active = "active"
 
     context = {
         'menu_objects': menu_objects, 
         'menu_dish_objects': menu_dish_objects,
+        'menu_dish_by_dish_objects': menu_dish_by_dish_objects,
         'page_object': page_object,
-        'dish_objects': dish_objects,
         "nav_menus_active": nav_menus_active
         }
 
