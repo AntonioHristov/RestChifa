@@ -15,23 +15,34 @@
                 {% include 'restChifa/paginator.html' %}
             </div>
         </div>
-        {% for dish_category in page_object.object_list %}
+        {% for dish_type in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <h2>{{ dish_category|upper }}</h2>
+                    <h2>{{ dish_type.fk_dish__fk_type__pk_name|upper }}</h2>
                 </div>
             </div>
-                <ul>
-                {% for dish in dish_objects %}
-                    {% if dish.fk_category.pk_name == dish_category %}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                <a href="./dish/{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
-                            </div>
+
+            {% for menu_dish_by_dish in menu_dish_by_dish_objects %}
+                {% if menu_dish_by_dish.fk_dish__fk_type__pk_name == dish_type.fk_dish__fk_type__pk_name %}
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <h2>{{ menu_dish_by_dish.fk_dish__fk_category__pk_name|upper }}</h2>
                         </div>
-                    {% endif %}
-                {% endfor %}
+                    </div>
+                {% endif %}
+
+                <ul>
+                    {% for dish in dish_objects %}
+                        {% if dish.fk_category.pk_name == menu_dish_by_dish.fk_dish__fk_category__pk_name and dish.fk_type.pk_name == dish_type.fk_dish__fk_type__pk_name %}
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <a href="./dish/{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
+            {% endfor %}
         {% endfor %}
     {% else %}
         <div class="row my-3">
