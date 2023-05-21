@@ -26,17 +26,19 @@ def index(request):
 
 def dishes(request):
 
+    dish_objects = Dish.objects.all().order_by('-popular', 'pk_name')
+
     try:
-        dish_fk_objects = Dish.objects.values('fk_category__pk_name', 'fk_type__pk_name').distinct().order_by('fk_category__position').all()
+        dish_fk_objects = dish_objects.values('fk_category__pk_name', 'fk_type__pk_name').distinct().order_by('fk_category__position').all()
     except Dish.DoesNotExist:
         dish_fk_objects = False
 
     try:
-        page_object = Common.get_paginator(request, Dish.objects.values('fk_type__pk_name').distinct().order_by('fk_type__position').all(), 1)
+        page_object = Common.get_paginator(request, dish_objects.values('fk_type__pk_name').distinct().order_by('fk_type__position').all(), 1)
     except Dish.DoesNotExist:
         page_object = False
 
-    dish_objects = Dish.objects.all()
+    
     nav_dishes_active = "active"
 
     context = {
