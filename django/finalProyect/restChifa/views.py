@@ -25,9 +25,21 @@ def index(request):
     page_object = Common.get_paginator(request, dish_objects)
     nav_index_active = "active"
 
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
+
     context = {
         "page_object": page_object,
-        "nav_index_active": nav_index_active
+        "nav_index_active": nav_index_active,
+        "url_page": url_page
         }
     return render(request, 'restChifa/index.html', context)
 
@@ -53,11 +65,23 @@ def dishes(request):
     
     nav_dishes_active = "active"
 
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
+
     context = {
         'dish_fk_objects': dish_fk_objects,
         'dish_objects': dish_objects,
         'page_object': page_object,
-        "nav_dishes_active": nav_dishes_active
+        "nav_dishes_active": nav_dishes_active,
+        "url_page": url_page
         }
         
     return render(request, 'restChifa/dishes.html', context)
@@ -71,9 +95,21 @@ def dish_detail(request, pk_name):
 
     nav_dishes_active = "active"
 
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
+
     context = {
     'dish': dish,
-    "nav_dishes_active": nav_dishes_active
+    "nav_dishes_active": nav_dishes_active,
+    "url_page": url_page
     }
     return render(request, 'restChifa/dish_detail.html', context)
 
@@ -87,10 +123,21 @@ def menus(request):
 
     page_object = Common.get_paginator(request, menu_objects)
     nav_menus_active = "active"
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
 
     context = {
         'page_object': page_object,
-        "nav_menus_active": nav_menus_active
+        "nav_menus_active": nav_menus_active,
+        "url_page": url_page
         }
     return render(request, 'restChifa/menus.html', context)
 
@@ -123,13 +170,24 @@ def menu_detail(request, pk_name):
 
     
     nav_menus_active = "active"
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
 
     context = {
         'menu_objects': menu_objects, 
         'menu_dish_objects': menu_dish_objects,
         'menu_dish_fk_objects': menu_dish_fk_objects,
         'page_object': page_object,
-        "nav_menus_active": nav_menus_active
+        "nav_menus_active": nav_menus_active,
+        "url_page": url_page
         }
 
     return render(request, 'restChifa/menu_detail.html', context)
@@ -263,10 +321,22 @@ def reserve(request):
     'error': error
     }
         
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
+
     context = {
-    'restaurant_objects': restaurant_objects,
-    'post': post,
-    "nav_reserve_active": nav_reserve_active
+        'restaurant_objects': restaurant_objects,
+        'post': post,
+        "nav_reserve_active": nav_reserve_active,
+        "url_page": url_page
     }
 
     return render(request,'restChifa/reserve.html', context)
@@ -288,11 +358,23 @@ def contact(request):
 
     nav_contact_active = "active"
 
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
+
     context = {
         'page_object': page_object,
         'phone_objects': phone_objects,
         'mail_objects': mail_objects,
-        "nav_contact_active": nav_contact_active
+        "nav_contact_active": nav_contact_active,
+        "url_page": url_page
         }
     return render(request, 'restChifa/contact.html', context)
 
@@ -303,11 +385,22 @@ def data_reserves(request):
     page_object = Common.get_paginator(request, Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc'), 1)
     user_timezone = settings.TIME_ZONE_USER
     nav_data_reserves_active = "active"
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
 
     context = {
         'page_object': page_object,
         'user_timezone': user_timezone,
-        "nav_data_reserves_active": nav_data_reserves_active
+        "nav_data_reserves_active": nav_data_reserves_active,
+        "url_page": url_page
         }
     return render(request, 'restChifa/data_reserves.html', context)
 

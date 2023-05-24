@@ -29,7 +29,7 @@
         {% for dish in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <a class="link-underline-primary" href="./dish/{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
+                    <a class="link-underline-primary" href="./{{url_page.dish}}{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
                 </div>
             </div>
         {% endfor %}

@@ -83,6 +83,8 @@ class Dish(models.Model):
 
 class Menu(models.Model):
     pk_name = models.CharField(primary_key=True, max_length=200, blank = False, null = False)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0, blank = False, null = False)
+    description = models.CharField(max_length=200, default="", blank = True, null = True)
 
     class Meta:
         verbose_name_plural = "Menus"

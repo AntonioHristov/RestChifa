@@ -134,3 +134,12 @@ SECONDS_IN_ADVANCE_RESERVES = 3540 # 1 hour counting the minute
 MAXIMUM_PEOPLE_PER_RESERVE = 10
 
 PAGINATOR_PER_PAGE = 10
+
+URL_INDEX = "principal"
+URL_DISHES = "platos/"
+URL_DISH = "plato/"
+URL_MENUS = "menus/"
+URL_MENU = "menu/"
+URL_RESERVE = "reservar/"
+URL_CONTACT = "contacto/"
+URL_DATA_RESERVES = "proximas_reservas/"

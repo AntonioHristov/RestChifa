@@ -12,21 +12,23 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <div class="navbar-brand active">
-            <img src="./../../static/restChifa/img/logo/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            RestChifa
-        </div>
+        <a class="nav-link" href="{{settings.BASE_DIR}}/restChifa/">
+            <div class="navbar-brand active">
+                <img src="./../../static/restChifa/img/logo/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                RestChifa
+            </div>
+        </a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link {{ nav_index_active }}" aria-current="page" href="{{settings.BASE_DIR}}/restChifa/">Menú Principal</a>
-                <a class="nav-link {{ nav_dishes_active }}" href="{{settings.BASE_DIR}}/restChifa/dishes">Platos</a>
-                <a class="nav-link {{ nav_menus_active }}" href="{{settings.BASE_DIR}}/restChifa/menus">Menus</a>
-                <a class="nav-link {{ nav_reserve_active }}" href="{{settings.BASE_DIR}}/restChifa/reserve">Reservar</a>
-                <a class="nav-link {{ nav_contact_active }}" href="{{settings.BASE_DIR}}/restChifa/contact">Contacto</a>
-                <a class="nav-link {{ nav_data_reserves_active }}" href="{{settings.BASE_DIR}}/restChifa/data_reserves">Próximas Reservas</a>
+                <a class="nav-link {{ nav_index_active }}" aria-current="page" href="{{settings.BASE_DIR}}/restChifa/{{url_page.index}}">Menú Principal</a>
+                <a class="nav-link {{ nav_dishes_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.dishes}}">Platos</a>
+                <a class="nav-link {{ nav_menus_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.menus}}">Menus</a>
+                <a class="nav-link {{ nav_reserve_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.reserve}}">Reservar</a>
+                <a class="nav-link {{ nav_contact_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.contact}}">Contacto</a>
+                <a class="nav-link {{ nav_data_reserves_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.data_reserves}}">Próximas Reservas</a>
             </div>
         </div>
         <form class="d-flex" role="search">

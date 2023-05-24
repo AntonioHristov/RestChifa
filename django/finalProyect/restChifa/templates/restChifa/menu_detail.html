@@ -16,6 +16,18 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h2> Precio: {{ menu_objects.price }}€</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h3> Descripcion: {{ menu_objects.description }}</h3>
+                </div>
+            </div>
+
             {% if page_object.object_list %}
                 <div class="row my-3">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -25,7 +37,7 @@
                 {% for dish_type in page_object.object_list %}
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <h2>{{ dish_type.fk_dish__fk_type__pk_name|upper }}</h2>
+                            <h2>Tipo de plato: {{ dish_type.fk_dish__fk_type__pk_name|upper }}</h2>
                         </div>
                     </div>
 
@@ -43,7 +55,7 @@
                                 {% if dish.fk_dish.fk_category.pk_name == menu_dish_fk.fk_dish__fk_category__pk_name and dish.fk_dish.fk_type.pk_name == dish_type.fk_dish__fk_type__pk_name %}
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                            <a href="./../dish/{{dish.fk_dish.pk_name}}"><li><h3>{{ dish.fk_dish.pk_name|upper }}</h3></li></a>
+                                            <a href="./../{{url_page.dish}}{{dish.fk_dish.pk_name}}"><li><h3>{{ dish.fk_dish.pk_name|upper }}</h3></li></a>
                                         </div>
                                     </div>
                                 {% endif %}

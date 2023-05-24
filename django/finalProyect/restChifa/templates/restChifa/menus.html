@@ -18,7 +18,7 @@
         {% for menu in page_object.object_list %}     
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <a href="./menu/{{menu.pk_name}}"><li><h3>{{ menu.pk_name|upper }}</h3></li></a>
+                    <a href="./../{{url_page.menu}}{{menu.pk_name}}"><li><h3>{{ menu.pk_name|upper }}</h3></li></a>
                 </div>
             </div>  
         {% endfor %}
