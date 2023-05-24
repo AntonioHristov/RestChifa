@@ -36,7 +36,7 @@
                         {% if dish.fk_category.pk_name == menu_dish_by_dish.fk_category__pk_name and dish.fk_type.pk_name == dish_type.fk_type__pk_name %}
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <a href="./../{{url_page.dish}}{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
+                                    <a target="_blank" href="./../{{url_page.dish}}{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
                                 </div>
                             </div>
                         {% endif %}
