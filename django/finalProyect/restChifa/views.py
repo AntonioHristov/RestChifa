@@ -8,6 +8,7 @@ import pytz
 from django.conf import settings
 from django.views.generic import ListView
 import re
+from django.db.models import Q
 from .common import Common
 
 
@@ -15,7 +16,13 @@ from .models import Restaurant, Reserve, Dish_type, Dish_category, Dish, Menu, M
 
 
 def index(request):
-    page_object = Common.get_paginator(request, Dish.objects.all().order_by('-popular', 'pk_name'))
+    search_get = request.GET.get('search')
+    dish_objects = Dish.objects.all().order_by('-popular', 'pk_name')
+
+    if search_get:
+        dish_objects = dish_objects.filter(Q(pk_name__icontains=search_get))
+
+    page_object = Common.get_paginator(request, dish_objects)
     nav_index_active = "active"
 
     context = {
@@ -25,8 +32,13 @@ def index(request):
     return render(request, 'restChifa/index.html', context)
 
 def dishes(request):
-
+    search_get = request.GET.get('search')
     dish_objects = Dish.objects.all().order_by('-popular', 'pk_name')
+
+    if search_get:
+        dish_objects = dish_objects.filter(Q(pk_name__icontains=search_get))
+
+    #dish_objects = Dish.objects.all().order_by('-popular', 'pk_name')
 
     try:
         dish_fk_objects = dish_objects.values('fk_category__pk_name', 'fk_type__pk_name').distinct().order_by('fk_category__position').all()
@@ -47,6 +59,7 @@ def dishes(request):
         'page_object': page_object,
         "nav_dishes_active": nav_dishes_active
         }
+        
     return render(request, 'restChifa/dishes.html', context)
 
 
@@ -66,7 +79,13 @@ def dish_detail(request, pk_name):
 
 
 def menus(request):
-    page_object = Common.get_paginator(request, Menu.objects.all())
+    search_get = request.GET.get('search')
+    menu_objects = Menu.objects.all()
+
+    if search_get:
+        menu_objects = menu_objects.filter(Q(pk_name__icontains=search_get))
+
+    page_object = Common.get_paginator(request, menu_objects)
     nav_menus_active = "active"
 
     context = {
@@ -77,7 +96,7 @@ def menus(request):
 
 
 def menu_detail(request, pk_name):
-        
+    search_get = request.GET.get('search')
     try:
         menu_objects = Menu.objects.get(pk__iexact=pk_name)
     except Menu.DoesNotExist:
@@ -85,6 +104,8 @@ def menu_detail(request, pk_name):
 
     try:
         menu_dish_objects = Menu_Dish.objects.filter(fk_menu=pk_name)
+        if search_get:
+            menu_dish_objects = menu_dish_objects.filter(Q(fk_dish__pk_name__icontains=search_get))
     except Menu_Dish.DoesNotExist:
         menu_dish_objects = False
 
@@ -252,9 +273,19 @@ def reserve(request):
 
 
 def contact(request):
-    page_object = Common.get_paginator(request, Contact.objects.all(), 1)
+    search_get = request.GET.get('search')
+    contact_objects = Contact.objects.all()
     phone_objects = Contact_Phone.objects.all()
     mail_objects = Contact_Mail.objects.all()
+
+    if search_get:
+        contact_objects = contact_objects.filter(Q(pk_id__icontains=search_get) | Q(name__icontains=search_get) | Q(main_phone__icontains=search_get) | Q(main_email__icontains=search_get))
+        phone_objects = phone_objects.filter(Q(phone__icontains=search_get))
+        mail_objects = mail_objects.filter(Q(email__icontains=search_get))
+
+
+    page_object = Common.get_paginator(request, contact_objects, 1)
+
     nav_contact_active = "active"
 
     context = {
