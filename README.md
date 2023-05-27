@@ -3,12 +3,7 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-Crear datos y solucionar bugs relacionados si hay,
-URL en español,
-Cada Menu tenga un precio,
-Abrir plato en otra página,
 poder buscar por pk en admin en todos o casi todos los modelos,
-Confirmacion al reservar y reset,
 datos reservas solo visible para los administradores,
 hacer que la barra de búsqueda filtre los resultados en datos reservas,
 datos reservas filtrados por restaurante en la url,

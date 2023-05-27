@@ -5,7 +5,7 @@
     
 
     
-    <form class="form-floating mb-3" method="POST">
+    <form class="form-floating mb-3" method="POST" onsubmit="return confirm('¿Quieres envíar los datos de la reserva?');" onreset="return confirm('¿Quieres vacíar los datos de la reserva?');">
         {% csrf_token %}
         
         <div class="mb-3">
