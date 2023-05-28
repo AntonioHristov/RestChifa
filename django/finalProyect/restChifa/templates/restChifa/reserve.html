@@ -1,9 +1,12 @@
 {% include 'restChifa/navegation.html' %} 
 
 <div class="container my-3">
-    <h1>RESERVA</h1>
-    
-
+       
+    <div class="row text-center">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h1>RESERVA</h1>
+        </div>
+    </div>
     
     <form id="reserve_form" class="form-floating mb-3" method="POST" onsubmit="return confirm('¿Quieres envíar los datos de la reserva?');" onreset="return reserveFormOnReset()">
         {% csrf_token %}

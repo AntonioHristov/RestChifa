@@ -1,6 +1,6 @@
 {% include 'restChifa/navegation.html' %} 
 
-<div class="container my-3">
+<div class="container text-center my-3">
 
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -18,7 +18,7 @@
         {% for dish_type in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <h2>{{ dish_type.fk_type__pk_name|upper }}</h2>
+                    <h2>Tipo de plato: {{ dish_type.fk_type__pk_name|upper }}</h2>
                 </div>
             </div>
 
