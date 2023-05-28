@@ -5,12 +5,12 @@
     
 
     
-    <form class="form-floating mb-3" method="POST" onsubmit="return confirm('¿Quieres envíar los datos de la reserva?');" onreset="return confirm('¿Quieres vacíar los datos de la reserva?');">
+    <form id="reserve_form" class="form-floating mb-3" method="POST" onsubmit="return confirm('¿Quieres envíar los datos de la reserva?');" onreset="return reserveFormOnReset()">
         {% csrf_token %}
         
         <div class="mb-3">
             <label class="form-label" for="name_reserve_name">Nombre: </label>
-            <input class="form-control {{ post.error.add_class_is_invalid.name }}" name="name_reserve_name" type="text" placeholder="Escribe tu nombre aquí" value="{{ post.name_reserve_name }}"/>
+            <input id="i" class="form-control {{ post.error.add_class_is_invalid.name }}" name="name_reserve_name" type="text" placeholder="Escribe tu nombre aquí" value="{{ post.name_reserve_name }}"/>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <label class="text-danger">{{ post.error.name }}</label>

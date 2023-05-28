@@ -254,7 +254,7 @@ def reserve(request):
             errorname = "El nombre no debe tener más de 200 caracteres"
 
         if not re.match(validate_prefix_phone_pattern, prefix_phone) :
-            errorprefixtlf = "El prefijo no es válido, [contenido] = opcional. El formato es: [+](Número del 1 al 9)[(Número del 0 al 9 o carácter -)] (Los caracteres totales deben ser entre 1 y 7)"
+            errorprefixtlf = "El prefijo no es válido"
         elif phone == "" or phone.isspace() or not phone.isnumeric() :
             errortlf = "El teléfono no debe estar vacío y debe ser un número entero no negativo"
         elif len(phone) < 9 :
@@ -265,7 +265,7 @@ def reserve(request):
             phone = str(prefix_phone) + " " + str(phone)
 
         if date_utc == "" or not Common.is_valid_date_reserve(date_utc) :
-            errordate = "Elige una fecha válida, debe haber al menos 1 hora de diferencia"
+            errordate = settings.MESSAGE_ERROR_RESERVES
 
         if name_restaurant == "" :
             errorrestaurant = "Debes elegir un restaurante, haz click en el desplegable y elige uno"

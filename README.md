@@ -3,16 +3,14 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-Crear fecha límite para crear reservas,
-Página fuera de servicio (para cambios, etc),
-boton reset funcione despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission),
+actualizar los dibujos
+optimizar, limpiar el código y pensar más cosas
+
+página fuera de servicio (para cambios, etc),
 textarea auto resize en reservas,
 intentar que en página principal aparezcan los menus que toquen (detectando el dia, etc),
 intentar de nuevo conseguir la hora local del usuario o guardar una lista y dar a elegir la zona horaria en el formulario,
 validaciones del formulario en cliente con javascript,
-actualizar los dibujos
-optimizar, limpiar el código y pensar más cosas
-
 
 
 Requerimientos:
