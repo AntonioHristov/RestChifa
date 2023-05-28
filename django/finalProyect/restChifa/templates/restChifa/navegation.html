@@ -28,7 +28,9 @@
                 <a class="nav-link {{ nav_menus_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.menus}}">Menus</a>
                 <a class="nav-link {{ nav_reserve_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.reserve}}">Reservar</a>
                 <a class="nav-link {{ nav_contact_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.contact}}">Contacto</a>
-                <a class="nav-link {{ nav_data_reserves_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.data_reserves}}">Próximas Reservas</a>
+                {% if user.is_superuser %}
+                    <a class="nav-link {{ nav_data_reserves_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.data_reserves}}">Próximas Reservas</a>
+                {% endif %}
             </div>
         </div>
         <form class="d-flex" role="search">

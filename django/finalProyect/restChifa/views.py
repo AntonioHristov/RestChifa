@@ -381,8 +381,15 @@ def contact(request):
 
 
 def data_reserves(request):
-    #page_object = Common.get_paginator(request, Reserve.objects.all().order_by('date_utc'), 1)
-    page_object = Common.get_paginator(request, Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc'), 1)
+    search_get = request.GET.get('search')
+
+    reserve_objects = Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc')
+
+    if search_get:
+        reserve_objects = reserve_objects.filter(Q(pk_id__icontains=search_get))
+    
+
+    page_object = Common.get_paginator(request, reserve_objects, 1)
     user_timezone = settings.TIME_ZONE_USER
     nav_data_reserves_active = "active"
     url_page = {

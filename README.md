@@ -3,14 +3,11 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-poder buscar por pk en admin en todos o casi todos los modelos,
-datos reservas solo visible para los administradores,
-hacer que la barra de búsqueda filtre los resultados en datos reservas,
 datos reservas filtrados por restaurante en la url,
 página fuera de servicio (para cambios, etc),
 crear fecha límite para crear reservas,
-textarea auto resize en reservas,
 boton reset funcione despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission),
+textarea auto resize en reservas,
 intentar que en página principal aparezcan los menus que toquen (detectando el dia, etc),
 intentar de nuevo conseguir la hora local del usuario o guardar una lista y dar a elegir la zona horaria en el formulario,
 validaciones del formulario en cliente con javascript,
