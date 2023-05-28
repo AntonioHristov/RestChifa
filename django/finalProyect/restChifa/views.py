@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 from django.utils.timezone import get_current_timezone
 import datetime
-import pytz
 from django.conf import settings
 from django.views.generic import ListView
 import re
@@ -49,8 +48,6 @@ def dishes(request):
 
     if search_get:
         dish_objects = dish_objects.filter(Q(pk_name__icontains=search_get))
-
-    #dish_objects = Dish.objects.all().order_by('-popular', 'pk_name')
 
     try:
         dish_fk_objects = dish_objects.values('fk_category__pk_name', 'fk_type__pk_name').distinct().order_by('fk_category__position').all()
@@ -214,28 +211,7 @@ def reserve(request):
         phone=request.POST['name_reserve_tlf']
         date_local=request.POST['name_reserve_date']
 
-
-        try:
-            bool(datetime.datetime.strptime(date_local, "%Y-%m-%dT%H:%M"))
-            # parse input datetime-local to object datetime format
-            date_processing = date_local.replace('T', '-').replace(':', '-').split('-')
-            date_processing = [int(v) for v in date_processing]
-            date_local = datetime.datetime(*date_processing)
-
-            #time_zone = pytz.timezone(timezone.get_current_timezone_name())
-            #time_zone = pytz.timezone('Europe/Madrid')
-            time_zone = pytz.timezone(settings.TIME_ZONE_USER)
-
-            date_time = date_local
-            # make time zone aware
-            date_local = time_zone.localize(date_time)
-
-            # convert to UTC
-            date_utc = date_local.astimezone(pytz.utc)
-        except ValueError:
-            date_utc = ""
-
-          
+        date_utc = Common.get_date_utc_from_date_local_javascript(date_local)
 
         name_restaurant = ""
         for restaurant in restaurant_objects:
@@ -246,7 +222,6 @@ def reserve(request):
         email=request.POST['name_reserve_email']
         other=request.POST['name_reserve_other']
         
-
 
         if name == "" or name.isspace() :
             errorname = "El nombre no debe estar vacío"
@@ -283,7 +258,6 @@ def reserve(request):
         if errorname == "" and errorprefixtlf == "" and errortlf == "" and errordate == "" and errorrestaurant == "" and errorpeople == "" and erroremail == "" and errorother == "" :
             reserve = Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,fk_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
             success = "Su reserva ha sido realizada con éxito. Guarda tu Identificador, es: " + str(reserve.pk)
-
 
     add_class_is_invalid = {
     'name': "is-invalid" if errorname != "" else "",

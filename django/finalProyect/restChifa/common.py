@@ -4,6 +4,7 @@ from django.utils.timezone import get_current_timezone
 import datetime
 from django.conf import settings
 from django.core.paginator import Paginator
+import pytz
 
 
 
@@ -29,3 +30,26 @@ class Common:
             return False
 
         return Paginator(model, per_page).get_page(request.GET.get("page"))
+
+    def get_date_utc_from_date_local_javascript(date_local_javascript):
+        try:
+            bool(datetime.datetime.strptime(date_local_javascript, "%Y-%m-%dT%H:%M"))
+            # parse input datetime-local to object datetime format
+            date_processing = date_local_javascript.replace('T', '-').replace(':', '-').split('-')
+            date_processing = [int(v) for v in date_processing]
+            date_local = datetime.datetime(*date_processing)
+
+            #time_zone = pytz.timezone(timezone.get_current_timezone_name())
+            #time_zone = pytz.timezone('Europe/Madrid')
+            time_zone = pytz.timezone(settings.TIME_ZONE_USER)
+
+            date_time = date_local
+            # make time zone aware
+            date_local = time_zone.localize(date_time)
+
+            # convert to UTC
+            date_utc = date_local.astimezone(pytz.utc)
+        except ValueError:
+            date_utc = ""
+
+        return date_utc

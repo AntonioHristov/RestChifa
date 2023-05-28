@@ -34,15 +34,6 @@ class Reserve(models.Model):
     def __str__(self):
         return 'ID: {}'.format(self.pk)
 
-    def __is_valid_bool__(self):
-        days_more = settings.DAYS_IN_ADVANCE_RESERVES
-        seconds_more = settings.SECONDS_IN_ADVANCE_RESERVES
-        return self.date_utc > Common.get_datetime_operation_add(timezone.now(),days_more,seconds_more)
-
-    def __is_valid_this__(self):
-        if __is_valid_bool__(self):
-            return self
-
 
 class Dish_type(models.Model):
     pk_name = models.CharField(primary_key=True, max_length=100, blank = False, null = False)
