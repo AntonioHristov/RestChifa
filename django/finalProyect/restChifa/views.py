@@ -383,7 +383,41 @@ def contact(request):
 def data_reserves(request):
     search_get = request.GET.get('search')
 
-    reserve_objects = Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc')
+    restaurant_objects = Restaurant.objects.all()
+
+    if search_get:
+        restaurant_objects = restaurant_objects.filter(Q(pk_name__icontains=search_get))
+    
+
+    page_object = Common.get_paginator(request, restaurant_objects)
+
+    nav_data_reserves_active = "active"
+    url_page = {
+        "index": settings.URL_INDEX,
+        "dishes": settings.URL_DISHES,
+        "dish": settings.URL_DISH,
+        "menus": settings.URL_MENUS,
+        "menu": settings.URL_MENU,
+        "reserve": settings.URL_RESERVE,
+        "contact": settings.URL_CONTACT,
+        "data_reserves": settings.URL_DATA_RESERVES
+    }
+
+    context = {
+        'page_object': page_object,
+        "nav_data_reserves_active": nav_data_reserves_active,
+        "url_page": url_page
+        }
+    return render(request, 'restChifa/data_reserves.html', context)
+
+def data_reserves_detail(request, pk_name):
+    search_get = request.GET.get('search')
+
+    if pk_name == "*":
+        reserve_objects = Reserve.objects.filter(date_utc__gte = timezone.now()).order_by('date_utc')
+    else:   
+        reserve_objects = Reserve.objects.filter(date_utc__gte = timezone.now(), fk_restaurant__pk_name = pk_name).order_by('date_utc')
+
 
     if search_get:
         reserve_objects = reserve_objects.filter(Q(pk_id__icontains=search_get))
@@ -409,7 +443,7 @@ def data_reserves(request):
         "nav_data_reserves_active": nav_data_reserves_active,
         "url_page": url_page
         }
-    return render(request, 'restChifa/data_reserves.html', context)
+    return render(request, 'restChifa/data_reserves_detail.html', context)
 
 
 class DishListView(ListView):

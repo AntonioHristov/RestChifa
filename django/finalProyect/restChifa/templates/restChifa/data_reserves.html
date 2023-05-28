@@ -4,7 +4,7 @@
 {% if user.is_superuser %}
     <div class="row my-3">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <h1>PRÓXIMAS RESERVAS</h1>
+            <h1>ELIGE RESTAURANTE</h1>
         </div>
     </div>
     {% if page_object.object_list %}
@@ -13,58 +13,23 @@
                 {% include 'restChifa/paginator.html' %}
             </div>
         </div>
-        {% load tz %}
-        {% for reserve in page_object.object_list %}
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Id: {{ reserve.pk_id }}</p>
-                </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <a href="./../{{url_page.data_reserves}}*">Todos</a>
             </div>
+        </div>
+        {% for restaurant in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Nombre: {{ reserve.name }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Teléfono: {{ reserve.phone }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Fecha LOCAL: {{ reserve.date_utc|timezone:user_timezone }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Fecha UTC: {{ reserve.date_utc }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Restaurante: {{ reserve.fk_restaurant }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Cantidad Personas: {{ reserve.number_people }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Email: {{ reserve.email }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <p>Otros Datos: {{ reserve.other }}</p>
+                    <a href="./../{{url_page.data_reserves}}{{restaurant.pk_name}}">{{ restaurant.pk_name }}</a>
                 </div>
             </div>
         {% endfor %}
     {% else %}
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <p>No hay próximas reservas.</p>
+                <p>No hay restaurantes.</p>
             </div>
         </div>
     {% endif %}

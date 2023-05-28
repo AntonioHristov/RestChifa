@@ -3,15 +3,13 @@ Proyecto Final Daw2V ies Juan de la Cierva
 
 Próximo paso: 
 
-datos reservas filtrados por restaurante en la url,
-página fuera de servicio (para cambios, etc),
-crear fecha límite para crear reservas,
+Crear fecha límite para crear reservas,
+Página fuera de servicio (para cambios, etc),
 boton reset funcione despues de submit (tal vez https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission),
 textarea auto resize en reservas,
 intentar que en página principal aparezcan los menus que toquen (detectando el dia, etc),
 intentar de nuevo conseguir la hora local del usuario o guardar una lista y dar a elegir la zona horaria en el formulario,
 validaciones del formulario en cliente con javascript,
-crear algún restaurante más y (muy opcional) considerar datos distintos entre ellos,
 actualizar los dibujos
 optimizar, limpiar el código y pensar más cosas
 
@@ -39,6 +37,9 @@ Requerimientos:
 		usuario: ah
 		contraseña: ah
 		email: ah@ah.ah
+
+	* Advertencias:
+		No usar "*" como pk_name (nombre de restaurante, plato, etc)
 
 Referencias destacadas:
 
