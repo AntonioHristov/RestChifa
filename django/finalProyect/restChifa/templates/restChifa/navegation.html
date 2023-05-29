@@ -23,10 +23,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link {{ nav_index_active }}" aria-current="page" href="{{settings.BASE_DIR}}/restChifa/{{url_page.index}}">Menú Principal</a>
+                <a class="nav-link {{ nav_index_active }}" aria-current="page" href="{{settings.BASE_DIR}}/restChifa/{{url_page.index}}">Inicio</a>
                 <a class="nav-link {{ nav_dishes_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.dishes}}">Platos</a>
                 <a class="nav-link {{ nav_menus_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.menus}}">Menus</a>
-                <a class="nav-link {{ nav_reserve_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.reserve}}">Reservar</a>
+                <a class="nav-link {{ nav_reserve_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.reserve}}">Reservas</a>
                 <a class="nav-link {{ nav_contact_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.contact}}">Contacto</a>
                 {% if user.is_superuser %}
                     <a class="nav-link {{ nav_data_reserves_active }}" href="{{settings.BASE_DIR}}/restChifa/{{url_page.data_reserves}}">Próximas Reservas</a>

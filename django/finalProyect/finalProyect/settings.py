@@ -140,11 +140,11 @@ MESSAGE_ERROR_RESERVES = "Elige una fecha válida, debe haber al menos 1 hora de
 
 PAGINATOR_PER_PAGE = 10
 
-URL_INDEX = "principal"
+URL_INDEX = "inicio/"
 URL_DISHES = "platos/"
 URL_DISH = "plato/"
 URL_MENUS = "menus/"
 URL_MENU = "menu/"
-URL_RESERVE = "reservar/"
+URL_RESERVE = "reservas/"
 URL_CONTACT = "contacto/"
 URL_DATA_RESERVES = "proximas_reservas/"

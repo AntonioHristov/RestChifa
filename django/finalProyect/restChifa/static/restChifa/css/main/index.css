@@ -1,6 +1,7 @@
 body
 {
-    background-color: lightblue;
+    background-image: url("./../../img/logo/background.jpg");
+    font-family: fantasy;
 }
 
 a li

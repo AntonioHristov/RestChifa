@@ -2,18 +2,18 @@
     {% if page_object.paginator.num_pages != 1 %} <!-- If there are more than 1 page -->
         Página {{ page_object.number }} de {{ page_object.paginator.num_pages }}
         {% if page_object.has_previous %}
-            <a href="?page=1"><button>&laquo; Primero</button></a>
+            <a href="?page=1"><button>&laquo; Primera</button></a>
             <a href="?page={{ page_object.previous_page_number }}"><button>&lt; Anterior</button></a>
         {% else %}
-            <button disabled>&laquo; Primero</button>
+            <button disabled>&laquo; Primera</button>
             <button disabled>&lt; Anterior</button>
         {% endif %}
         {% if page_object.has_next %}
             <a href="?page={{ page_object.next_page_number }}"><button>Siguiente &gt;</button></a>
-            <a href="?page={{ page_object.paginator.num_pages }}"><button>Último &raquo;</button></a>
+            <a href="?page={{ page_object.paginator.num_pages }}"><button>Última &raquo;</button></a>
         {% else %}
             <button disabled>Siguiente &gt;</button>
-            <button disabled>Último &raquo;</button>
+            <button disabled>Última &raquo;</button>
         {% endif %}
     {% endif %}
 {% else %}
