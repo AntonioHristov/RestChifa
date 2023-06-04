@@ -8,6 +8,13 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h2>Nuestro restaurante ofrece los platos más auténticos y tradicionales de la gastronomía chino-peruana CHIFA.</h2>
+        </div>
+    </div>
+
+
 
     {% if page_object.object_list %}
         <div class="row my-3">
@@ -26,7 +33,7 @@
                 {% if menu_dish_by_dish.fk_type__pk_name == dish_type.fk_type__pk_name %}
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <h2>{{ menu_dish_by_dish.fk_category__pk_name|upper }}</h2>
+                            <h3>{{ menu_dish_by_dish.fk_category__pk_name|upper }}</h3>
                         </div>
                     </div>
                 {% endif %}
@@ -51,6 +58,17 @@
             </div>
         </div>
     {% endif %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h4>
+                Cumpleaños y Reuniones<br>
+                Reserve una mesa para dos con nuestros mejores platos para su aniversario,
+                o reserve una mesa más grande para reunir a toda la familia en un lindo día.
+                También reúna a todos sus amigos o compañeros de trabajo para una cena.
+            </h4>
+        </div>
+    </div>
 </div>
 
 

@@ -7,6 +7,12 @@
             <h1>RESERVA</h1>
         </div>
     </div>
+
+    <div class="row text-center">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h2>{{msg_time}}</h2>
+        </div>
+    </div>
     
     <form id="reserve_form" class="form-floating mb-3" method="POST" onsubmit="return confirm('¿Quieres envíar los datos de la reserva?');" onreset="return reserveFormOnReset()">
         {% csrf_token %}
@@ -29,7 +35,7 @@
         </div>
     
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <label class="form-label" for="name_reserve_date">Fecha: </label>
+            <label class="form-label" for="name_reserve_date">Fecha: ({{msg_date}})</label>
             <input class="form-control {{ post.error.add_class_is_invalid.date }}" name="name_reserve_date" type="datetime-local" value="{{ post.name_reserve_date }}"/>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -52,7 +58,7 @@
         </div>
     
         <div class="mb-3">
-            <label class="form-label" for="name_reserve_people">Cantidad Personas: </label>
+            <label class="form-label" for="name_reserve_people">Cantidad Personas (Máximo: {{limit_people}}) : </label>
             <input class="form-control {{ post.error.add_class_is_invalid.people }}" name="name_reserve_people" type="number" min="1" value="{{ post.name_reserve_people }}"/>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -78,6 +84,12 @@
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <b class="text-success fs-1">{{ post.success }}</b>
         </div>
+
+        {% if post.success %}
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <b class="text-success fs-1">¡Le esperamos pronto y siempre serán bienvenidos en el Chifa Tumi!</b>
+            </div>
+        {% endif %}
      
 
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">

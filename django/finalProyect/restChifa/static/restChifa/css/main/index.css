@@ -1,7 +1,15 @@
+@font-face 
+{
+    font-family: 'customize_font';
+    src: url("./../../Font/A_Calling_Font_D.otf") format("truetype");
+}
+
 body
 {
-    background-image: url("./../../img/logo/background.jpg");
-    font-family: fantasy;
+    font-family: 'customize_font';
+    /*
+    background-image: url("./../../img/background/background.jpg");
+    */
 }
 
 a li

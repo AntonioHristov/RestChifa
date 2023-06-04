@@ -4,7 +4,7 @@
    
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <h1>BIENVENIDO A RESTCHIFA</h1>
+            <h1>Bienvenidos a la web del restaurante "Chifa Tumi"</h1>
         </div>
     </div>
     <div class="row">
@@ -15,7 +15,17 @@
 
     <div class="row my-3">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <h2>PLATOS POPULARES</h2>
+            <h3>
+                Nuestro restaurante es un establecimiento caracterizado por ofrecer auténtica
+                gastronomía chino-peruana de gran calidad llamada en Perú CHIFA, a precios muy
+                competitivos y que sin duda, hará las delicias de los amantes de esta comida.                
+            </h3>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h2>Platos populares</h2>
         </div>
     </div>
     {% if page_object.object_list %}
@@ -29,7 +39,7 @@
         {% for dish in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <a target="_blank" class="link-underline-primary" href="./{{url_page.dish}}{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
+                    <a target="_blank" class="link-underline-primary" href="./../{{url_page.dish}}{{dish.pk_name}}"><li><h3>{{ dish.pk_name|upper }}</h3></li></a>
                 </div>
             </div>
         {% endfor %}
@@ -41,4 +51,17 @@
             </div>
         </div>
     {% endif %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h4>
+                Horario<br>
+                Lunes a Jueves y Domingos<br>
+                12:00 - 01:00 hrs<br>
+                Viernes y Sábados<br>
+                12:00 - 01:30 hrs<br>
+            </h4>
+        </div>
+    </div>
+
 </div>

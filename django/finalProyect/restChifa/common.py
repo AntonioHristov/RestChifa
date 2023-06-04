@@ -17,13 +17,15 @@ class Common:
         return result
 
     def is_valid_date_reserve(date_utc):
-        return date_utc > Common.get_limit_less_date_reserve() and date_utc < Common.get_limit_more_date_reserve()
+        return Common.get_limit_date_reserve(date_utc) and Common.get_valid_time_utc_reserve(date_utc)
 
-    def get_limit_less_date_reserve():
-        return Common.get_datetime_operation_add(timezone.now(), settings.DAYS_IN_ADVANCE_RESERVES, settings.SECONDS_IN_ADVANCE_RESERVES)
+    def get_limit_date_reserve(date_utc):
+        return date_utc >= Common.get_datetime_operation_add(timezone.now(), settings.DAYS_IN_ADVANCE_RESERVES, settings.SECONDS_IN_ADVANCE_RESERVES) and date_utc <= Common.get_datetime_operation_add(timezone.now(), settings.LIMIT_DAYS_IN_ADVANCE_RESERVES, settings.LIMIT_SECONDS_IN_ADVANCE_RESERVES)
 
-    def get_limit_more_date_reserve():
-        return Common.get_datetime_operation_add(timezone.now(), settings.LIMIT_DAYS_IN_ADVANCE_RESERVES, settings.LIMIT_SECONDS_IN_ADVANCE_RESERVES)
+    def get_valid_time_utc_reserve(date_utc):
+        first_time = datetime.time(settings.FIRST_HOUR_UTC_RESERVES, settings.FIRST_MINUTE_UTC_RESERVES)
+        last_time = datetime.time(settings.LAST_HOUR_UTC_RESERVES, settings.LAST_MINUTE_UTC_RESERVES)
+        return date_utc.time() >= first_time and date_utc.time() <= last_time
 
     def get_paginator(request, model, per_page=settings.PAGINATOR_PER_PAGE):
         if request is None or model is None:

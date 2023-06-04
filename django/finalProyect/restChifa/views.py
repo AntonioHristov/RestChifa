@@ -240,7 +240,7 @@ def reserve(request):
             phone = str(prefix_phone) + " " + str(phone)
 
         if date_utc == "" or not Common.is_valid_date_reserve(date_utc) :
-            errordate = settings.MESSAGE_ERROR_RESERVES
+            errordate = settings.MESSAGE_ERROR_DATE_RESERVES
 
         if name_restaurant == "" :
             errorrestaurant = "Debes elegir un restaurante, haz click en el desplegable y elige uno"
@@ -257,7 +257,7 @@ def reserve(request):
 
         if errorname == "" and errorprefixtlf == "" and errortlf == "" and errordate == "" and errorrestaurant == "" and errorpeople == "" and erroremail == "" and errorother == "" :
             reserve = Reserve.objects.create(name=name,phone=phone,date_utc=date_utc,fk_restaurant=name_restaurant,number_people=number_people,email=email,other=other)
-            success = "Su reserva ha sido realizada con éxito. Guarda tu Identificador, es: " + str(reserve.pk)
+            success = "Su reserva ha sido realizada con éxito. Guarda tu Identificador: " + str(reserve.pk)
 
     add_class_is_invalid = {
     'name': "is-invalid" if errorname != "" else "",
@@ -309,6 +309,9 @@ def reserve(request):
     context = {
         'restaurant_objects': restaurant_objects,
         'post': post,
+        'msg_date': settings.MESSAGE_DATE_RESERVES,
+        'msg_time': settings.MESSAGE_TIME_RESERVES,
+        'limit_people': settings.MAXIMUM_PEOPLE_PER_RESERVE,
         "nav_reserve_active": nav_reserve_active,
         "url_page": url_page
     }

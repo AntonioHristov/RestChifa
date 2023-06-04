@@ -1,6 +1,8 @@
 {% if page_object %}
     {% if page_object.paginator.num_pages != 1 %} <!-- If there are more than 1 page -->
-        Página {{ page_object.number }} de {{ page_object.paginator.num_pages }}
+        <b>
+            Página {{ page_object.number }} de {{ page_object.paginator.num_pages }}
+        </b>
         {% if page_object.has_previous %}
             <a href="?page=1"><button>&laquo; Primera</button></a>
             <a href="?page={{ page_object.previous_page_number }}"><button>&lt; Anterior</button></a>
