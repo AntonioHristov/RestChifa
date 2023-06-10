@@ -90,7 +90,12 @@ def dish_detail(request, pk_name):
     except Dish.DoesNotExist:
         dish = False
 
-    nav_dishes_active = "active"
+    if request.GET.get('is_menu'):
+        nav_menus_active = "active"
+        nav_dishes_active = ""
+    else:
+        nav_dishes_active = "active"
+        nav_menus_active = ""
 
     url_page = {
         "index": settings.URL_INDEX,
@@ -105,6 +110,7 @@ def dish_detail(request, pk_name):
 
     context = {
     'dish': dish,
+    "nav_menus_active": nav_menus_active,
     "nav_dishes_active": nav_dishes_active,
     "url_page": url_page
     }

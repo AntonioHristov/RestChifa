@@ -55,7 +55,7 @@
                                 {% if dish.fk_dish.fk_category.pk_name == menu_dish_fk.fk_dish__fk_category__pk_name and dish.fk_dish.fk_type.pk_name == dish_type.fk_dish__fk_type__pk_name %}
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                            <a target="_blank" href="./../{{url_page.dish}}{{dish.fk_dish.pk_name}}"><li><h3>{{ dish.fk_dish.pk_name|upper }}</h3></li></a>
+                                            <a target="_blank" href="./../{{url_page.dish}}{{dish.fk_dish.pk_name}}?is_menu=true"><li><h3>{{ dish.fk_dish.pk_name|upper }}</h3></li></a>
                                         </div>
                                     </div>
                                 {% endif %}
