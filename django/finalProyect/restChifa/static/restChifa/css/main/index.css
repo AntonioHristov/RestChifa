@@ -1,15 +1,14 @@
 @font-face 
 {
     font-family: 'customize_font';
-    src: url("./../../Font/A_Calling_Font_D.otf") format("truetype");
+    src: url("./../../Font/Mutter_Krause_Halbfett.ttf") format("truetype");
 }
 
 body
 {
     font-family: 'customize_font';
-    /*
-    background-image: url("./../../img/background/background.jpg");
-    */
+    /*background-image: url("./../../img/background/Background.jpg");*/
+    color: black;
 }
 
 a li
