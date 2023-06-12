@@ -4,7 +4,9 @@ Proyecto Final Daw2V ies Juan de la Cierva
 Próximo paso: 
 
 actualizar los dibujos
-optimizar, limpiar el código y pensar más cosas
+optimizar, limpiar el código
+
+Algunas cosas que faltó tiempo:
 
 página fuera de servicio (para cambios, etc),
 textarea auto resize en reservas,

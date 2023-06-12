@@ -16,13 +16,13 @@
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <a href="./../{{url_page.data_reserves}}*">Todos</a>
+                <a href="./../{{url_page.data_reserves}}*"><li>Todos</li></a>
             </div>
         </div>
         {% for restaurant in page_object.object_list %}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <a href="./../{{url_page.data_reserves}}{{restaurant.pk_name}}">{{ restaurant.pk_name }}</a>
+                    <a href="./../{{url_page.data_reserves}}{{restaurant.pk_name}}"><li>{{ restaurant.pk_name }}</li></a>
                 </div>
             </div>
         {% endfor %}
